@@ -1,5 +1,4 @@
 /* fakta pemain */
-:- dynamic()
 :- dynamic(job/1).
 :- dynamic(att/1).
 :- dynamic(def/1).
