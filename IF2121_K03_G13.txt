@@ -1,0 +1,30 @@
+Cerita:
+Permainan diawali dengan seorang mahasiswa yang tiba-tiba masuk ke isekai akibat denial dengan mengerjakan tubes-tubes kuliah. 
+Mahasiswa tersebut menemukan dirinya terbangun di dunia bernama Genshin Isekai. 
+Di dalam dunia tersebut, dia harus memilih satu dari 3 job yang disediakan (Swordsman, Archer, dan Sorcerer) yang masing-masing memiliki status yang berbeda-beda. 
+Untuk keluar dari isekai tersebut, dia harus melawan Boss yang sangatlah tidak mudah untuk langsung dikalahkan di awal. 
+Untuk bisa mengalahkannya, mahasiswa tersebut harus meningkatkan experience-nya dengan mengalahkan musuh-musuh dan mengerjakan quest-quest yang ada dunia tersebut. 
+Mahasiswa itu juga akan dibekali equipment yang akan meningkat kemampuannya dan item-item yang membantunya dalam bertarung didapatkan dari mengalahkan musuh atau membelinya di shop yang disediakan. 
+Jika mahasiswa tersebut sudah merasa cukup kuat dan berhasil mengalahkan Boss di dunia tersebut maka mahasiswa tersebut akan keluar dari dunia Genshin Isekai.
+
+Fakta:
+Fakta tentang job dan stat yang diberikan di awal.
+job(tipe job, HP awal, MP awal, attack, defense, magic)
+Fakta tentang musuh dan statnya
+enemy(tipe enemy, HP, attack, exp yang diberikan)
+Fakta tentang equipment beserta stat dan syaratnya
+equipment(nama senjata, tipe senjata, job yang bisa memakai, attack, defense)
+Fakta tentang item beserta efek statusnya
+item(nama item, hp yang diberikan, mp yang diberikan)
+Fakta tentang quest beserta musuh yang harus dikalahkan dan reward.
+quest(nama quest, jumlah slime yang harus dikalahkan, jumlah goblin yang harus dikalahkan, jumlah wolf yang harus dikalahkan, exp yang didapatkan)
+Fakta lokasi quest,store sama boss
+
+Rule:
+Player mati jika hp = 0 (game over)
+Player memenangkan game jika boss dungeon dikalahkan
+Karakter naik level jika exp sudah menyentuh angka yang ditetapkan di fakta
+Menambahkan atau membuang inventory
+Pemilihan equipment yang didapatkan dari gacha
+Battle mechanism
+

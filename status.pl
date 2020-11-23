@@ -23,26 +23,30 @@ start :- write('Pilih Job yang diinginkan: '), nl,
         write('2. Sorcerer'), nl,
         write('3. Archer'), nl,
         write('Masukkan job yang diinginkan'), nl,
-        read(InputJob), assignJob(InputJob),!.
+        read(InputJob), 
+        assignJob(InputJob),!.
 
 assignJob(InputJob) :- 
         InputJob = 1, 
+        retractall(job(_)),
         asserta(job(swordsman)), 
         write('Job Anda adalah Swordsman'), inputStats(swordsman), !.
 assignJob(InputJob) :- 
         InputJob = 2, 
+        retractall(job(_)),
         asserta(job(sorcerer)), 
         write('Job Anda adalah Sorcerer'), 
         inputStats(sorcerer), !.
 assignJob(InputJob) :- 
         InputJob = 3, 
+        retractall(job(_)),
         asserta(job(archer)), 
         write('Job Anda adalah Archer'), 
         inputStats(archer), !.
 assignJob(InputJob) :- write('Salah input'),!.
 
 inputStats(JobName) :- 
-        JobName = swordsman, 
+        JobName = swordsman,
         asserta(att(50)), 
         asserta(def(50)), 
         asserta(currHP(100)), 
