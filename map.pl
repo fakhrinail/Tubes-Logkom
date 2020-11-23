@@ -214,20 +214,21 @@ near_boss :- near(dungeonboss).
 % mungkin nanti bisa di tingkkatkan lagi dengan pasang dyamic untuk mengubah chance datangnya enemy sebagai pengatur tingkat kesulitan
 
 random_enemy :-     % chance untuk goblin,wolf dan slime masi sama
-    random(1,3,X),
+    random(1,4,X),
     X =:= 1,
     write('You find a slime!!'), nl,!.
 random_enemy :-
-    random(1,3,X),
+    random(1,4,X),
     X =:= 2,
     write('You find a goblin!!'), nl,!.
 random_enemy :-
-    random(1,3,X),
+    random(1,4,X),
     X =:= 3,
     write('You find a wolf!!'), nl,!.
 
 enemy_found :-
     random(0,100,X),
-    X < 20,
+    X < 30,
     random_enemy,!.
+
 enemy_found.
