@@ -25,3 +25,8 @@ discardItem(Item, X) :- (isInInventory(Item) -> stored(Item, Y), Z is Y-X,
                         NewUsedSpace is UsedSpace - X, asserta(usedSpace(NewUsedSpace))),
                         write('Item telah dibuang.'), nl;
                         write('Anda tidak memiliki item yang mau dibuang.'), nl).
+
+inventory :- write('Kapasitas inventory : '), inventory(X), write(X), write('/'), write('100.'), nl,
+             write('Daftar barang : '), nl, nl,
+             forall((isInInventory(Item)), 
+             (countItemInventory(Item, CountItem), write(Item), write(' ('), write(CountItem), write(') '), nl)), nl.
