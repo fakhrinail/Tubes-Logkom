@@ -1,11 +1,25 @@
-main_Menu :-
-        write('                        [ Welcome to My World ]                     '), nl, nl,
-        write('####################################################################'), nl,
-        write('# 1. start       : untuk memulai petualanganmu                     #'), nl,
-        write('# 2. continue    : melanjutkan permainan terakhir                  #'), nl,
-        write('# 3. load        : memuat data permainan                           #'), nl,
-        write('# 4. help        : menampilkan segala bantuan                      #'), nl,
-        write('####################################################################'), nl.
+/* include file .pl */
+:- include('status.pl').
+:- include('help.pl').
+:- include('map.pl').
+:- include('inventory.pl').
+:- include('items.pl').
+:- initialization(nl).
+:- initialization(write('                        [ Welcome to My World ]                     ')).
+:- initialization(nl).
+:- initialization(nl).
+:- initialization(write('####################################################################')).
+:- initialization(nl).
+:- initialization(write('# 1. start       : untuk memulai petualanganmu                     #')).
+:- initialization(nl).
+:- initialization(write('# 2. continue    : melanjutkan permainan terakhir                  #')).
+:- initialization(nl).
+:- initialization(write('# 3. load        : memuat data permainan                           #')).
+:- initialization(nl).
+:- initialization(write('# 4. help        : menampilkan segala bantuan                      #')).
+:- initialization(nl).
+:- initialization(write('####################################################################')).
+:- initialization(nl).
 
 game_Menu :-
         write('####################################################################'), nl,
