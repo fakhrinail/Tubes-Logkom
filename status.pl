@@ -18,7 +18,7 @@ gold(goldawal).
 lvl(1).
 
 
-daftar :- write('Pilih Job yang diinginkan: '), nl,
+start :- write('Pilih Job yang diinginkan: '), nl,
         write('1. Swordsman'), nl,
         write('2. Sorcerer'), nl,
         write('3. Archer'), nl,
@@ -66,7 +66,7 @@ inputStats(JobName) :-
         asserta(gold(100)), 
         asserta(expr(0)).
 
-status :-
+stats :-
         job(JobName), 
         write('Job: '), 
         write(JobName), nl,
