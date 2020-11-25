@@ -168,6 +168,11 @@ quest :-
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
     write("Selamat Anda beruntung! Kalahkan "), write(X), write(" Ogre, "), write(Y), write(" Cursed Knight dan "), write(Z), write(" Ultima Dragon untuk dapatkan reward").
+quest :- 
+    isOnQuest = 0,
+    lvl(Lvl),
+    Lvl > 50,
+    write("Udah OP langsung bantai boss").
 
 % cek quest complete setiap habis battle
 questCompleted :-
