@@ -1,73 +1,127 @@
 /* fakta enemy */
-:- dynamic(job/1).
-:- dynamic(att/1).
-:- dynamic(specialatt/2). % parameter 1 buat jumlah damage, parameter 2 buat cooldown
-:- dynamic(def/1).
-:- dynamic(currHP/1).
-:- dynamic(maxHP/1).
-:- dynamic(lvl/1).
+:- dynamic(enemy_currHP/1).
 
-% gold yang didapat setelah mengalahkan enemy
-gold(goblin, 200).
-gold(slime, 100).
-gold(wolf, 150).
-gold(knight, 500).
-gold(witch, 550).
-gold(ultimaDragon, 1000).
+% maxHP enemy
+enemy_maxHP(goblin, 100).
+enemy_maxHP(slime, 60).
+enemy_maxHP(wolf, 400).
+enemy_maxHP(witch, 800).
+enemy_maxHP(armoredGoblin, 1200).
+enemy_maxHP(cubicSlime, 1000).
+enemy_maxHP(werewolf, 2000).
+enemy_maxHP(ogre, 4000).
+enemy_maxHP(cursedKnight, 8000).
+enemy_maxHP(ultimaDragon, 12000).
+enemy_maxHP(tugasBesar, 25000). % final boss
 
-% exp yang didapat setelah mengalahkan enemy
-exp(goblin, 40).
-exp(slime, 25).
-exp(wolf, 100).
-exp(knight, 500).
-exp(witch, 800).
-exp(ultimaDragon, 2000).
+% ATK enemy
+enemy_ATK(goblin, 25).
+enemy_ATK(slime, 10).
+enemy_ATK(wolf, 45).
+enemy_ATK(witch, 30).
+enemy_ATK(armoredGoblin, 100).
+enemy_ATK(cubicSlime, 150).
+enemy_ATK(werewolf, 300).
+enemy_ATK(ogre, 800).
+enemy_ATK(cursedKnight, 500).
+enemy_ATK(ultimaDragon, 1000).
+enemy_ATK(tugasBesar, 1200). % final boss
 
-% base stats enemy
+% DEF enemy
+enemy_DEF(goblin, 30).
+enemy_DEF(slime, 15).
+enemy_DEF(wolf, 35).
+enemy_DEF(witch, 35).
+enemy_DEF(armoredGoblin, 200).
+enemy_DEF(cubicSlime, 150).
+enemy_DEF(werewolf, 300).
+enemy_DEF(ogre, 500).
+enemy_DEF(cursedKnight, 900).
+enemy_DEF(ultimaDragon, 600).
+enemy_DEF(tugasBesar, 900). % final boss
+
+% special atk enemy
+enemy_SPATK(goblin, 50, 60).
+enemy_SPATK(slime, 30, 60).
+enemy_SPATK(wolf, 100, 120).
+enemy_SPATK(witch, 200, 60).
+enemy_SPATK(armoredGoblin, 200, 120).
+enemy_SPATK(cubicSlime, 300, 120).
+enemy_SPATK(werewolf, 500, 120).
+enemy_SPATK(ogre, 3000, 240).
+enemy_SPATK(cursedKnight, 1000, 120).
+enemy_SPATK(ultimaDragon, 3000, 180).
+enemy_SPATK(tugasBesar, 5000, 180). % final boss
+
+% lvl enemy
+enemy_lvl(goblin, 5).
+enemy_lvl(slime, 5).
+enemy_lvl(wolf, 10).
+enemy_lvl(witch, 15).
+enemy_lvl(armoredGoblin, 20).
+enemy_lvl(cubicSlime, 20).
+enemy_lvl(werewolf, 25).
+enemy_lvl(ogre, 30).
+enemy_lvl(cursedKnight, 40).
+enemy_lvl(ultimaDragon, 50).
+enemy_lvl(tugasBesar, 60). % final boss
+
+% battle_gold yang didapat setelah mengalahkan enemy
+battle_gold(goblin, 200).
+battle_gold(slime, 100).
+battle_gold(wolf, 300).
+battle_gold(witch, 600).
+battle_gold(armoredGoblin, 1000).
+battle_gold(cubicSlime, 800).
+battle_gold(werewolf, 2000).
+battle_gold(ogre, 4500).
+battle_gold(cursedKnight, 7500).
+battle_gold(ultimaDragon, 10000).
+battle_gold(tugasBesar, 1000000). % final boss
+
+% battle_exp yang didapat setelah mengalahkan enemy
+battle_exp(goblin, 250).
+battle_exp(slime, 100).
+battle_exp(wolf, 800).
+battle_exp(witch, 1000).
+battle_exp(armoredGoblin, 1600).
+battle_exp(cubicSlime, 1300).
+battle_exp(werewolf, 3100).
+battle_exp(ogre, 6250).
+battle_exp(cursedKnight, 12500).
+battle_exp(ultimaDragon, 25000).
+battle_exp(tugasBesar, 50000). % final boss
+
+% game combat
 enemy(goblin) :-
-    asserta(att(8)), 
-    asserta(def(8)), 
-    asserta(currHP(50)), 
-    asserta(maxHP(50)), 
-    asserta(specialatt(20, 120)),
-    asserta(lvl(5)).
+    asserta(enemy_currHP(100)).
 
 enemy(slime) :-
-    asserta(att(6)), 
-    asserta(def(10)), 
-    asserta(currHP(30)), 
-    asserta(maxHP(30)),
-    asserta(specialatt(10, 25)),
-    asserta(lvl(5)).
+    asserta(enemy_currHP(60)).
 
 enemy(wolf) :-
-    asserta(att(50)), 
-    asserta(def(40)), 
-    asserta(currHP(150)), 
-    asserta(maxHP(150)), 
-    asserta(specialatt(300, 300)),
-    asserta(lvl(15)).
-
-enemy(knight) :-
-    asserta(att(20)), 
-    asserta(def(100)), 
-    asserta(currHP(300)), 
-    asserta(maxHP(300)), 
-    asserta(specialatt(200, 180)),
-    asserta(lvl(20)).
+    asserta(enemy_currHP(400)).
 
 enemy(witch) :-
-    asserta(att(200)), 
-    asserta(def(580)), 
-    asserta(currHP(750)), 
-    asserta(maxHP(750)), 
-    asserta(specialatt(75, 15)),
-    asserta(lvl(30)).
+    asserta(enemy_currHP(800)).
+
+enemy(armoredGoblin) :-
+    asserta(enemy_currHP(1200)).
+
+enemy(cubicSlime) :-
+    asserta(enemy_currHP(1000)).
+
+enemy(werewolf) :-
+    asserta(enemy_currHP(2000)).
+
+enemy(ogre) :-
+    asserta(enemy_currHP(4000)).
+
+enemy(cursedKnight) :-
+    asserta(enemy_currHP(8000)).
 
 enemy(ultimaDragon) :-
-    asserta(att(500)), 
-    asserta(def(200)), 
-    asserta(currHP(5000)), 
-    asserta(maxHP(5000)), 
-    asserta(specialatt(2500, 600)),
-    asserta(lvl(75)).
+    asserta(enemy_currHP(12000)).
+
+enemy(tugasBesar) :-
+    asserta(enemy_currHP(25000)).
