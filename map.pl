@@ -83,6 +83,7 @@ position(dungeonboss,10,12).
 
 % prosedur berpindah
 a :-
+    \+(enemy_spawned(_)),
     position(player,X,Y),
     Xa is X-1,
     between(1,10,Xa),
@@ -92,10 +93,16 @@ a :-
     asserta(position(player,Xa,Y)),
     write('You move west'),nl,
     set_enemy_random,!.
+
+a :-
+    enemy_spawned(_),
+    write('There is an enemy nearby, Cant move !'),nl,!.
+
 a :-
     write('Cant go there'),nl.
 
 d :-
+    \+(enemy_spawned(_)),
     position(player,X,Y),
     Xa is X+1,
     between(1,10,Xa),
@@ -106,9 +113,14 @@ d :-
     write('You move east'),nl,
     set_enemy_random,!.
 d :-
+    enemy_spawned(_),
+    write('There is an enemy nearby, Cant move !'),nl,!.
+
+d :-
     write('Cant go there'),nl.
 
 s :-
+    \+(enemy_spawned(_)),
     position(player,X,Y),
     Ya is Y+1,
     between(1,12,Ya),
@@ -119,9 +131,14 @@ s :-
     write('You move south'),nl,
     set_enemy_random,!.
 s :-
+    enemy_spawned(_),
+    write('There is an enemy nearby, Cant move !'),nl,!.
+
+s :-
     write('Cant go there'),nl.
 
 w :-
+    \+(enemy_spawned(_)),
     position(player,X,Y),
     Ya is Y-1,
     between(1,12,Ya),
@@ -131,6 +148,9 @@ w :-
     asserta(position(player,X,Ya)),
     write('You move north'),nl,
     set_enemy_random,!.
+w :-
+    enemy_spawned(_),
+    write('There is an enemy nearby, Cant move !'),nl,!.
 w :-
     write('Cant go there'),nl.
 
@@ -216,9 +236,17 @@ near_boss :- near(dungeonboss).
 :- dynamic(lvl/1).
 
 set_enemy_random :-
+    \+(near_boss),
     random(1,101,X),
     X < 33,
     random_enemy,!.
+
+set_enemy_random :-
+    near_boss,
+    write('You feel being watched......'), 
+    sleep(4),
+    write('The Dungeon Boss appears !!!'),
+    init_battle(tugasBesar),!.
 
 set_enemy_random.
 
@@ -226,54 +254,61 @@ random_enemy :-
     lvl(Lvl),
     Lvl >= 1, Lvl =< 4,
     random(1,3,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
 
 random_enemy :-
     lvl(Lvl),
     Lvl >= 5, Lvl =< 9,
     random(1,4,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
 
 random_enemy :-
     lvl(Lvl),
     Lvl >= 10, Lvl =< 14,
     random(3,5,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
 
 random_enemy :-
     lvl(Lvl),
     Lvl >= 15, Lvl =< 19,
     random(4,8,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
 
 random_enemy :-
     lvl(Lvl),
     Lvl >= 20 , Lvl =< 29,
     random(5,9,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
 
 random_enemy :-
     lvl(Lvl),
     Lvl >= 30, Lvl =< 39,
     random(7,10,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
 
 random_enemy :-
     lvl(Lvl),
     Lvl >= 40,
     random(8,11,X),
-    enemy(_,Name,X),
+    enemy(Enemy,Name,X),
     write('You find '), write(Name),write('!!'),
+    init_battle(Enemy),
     nl,!.
