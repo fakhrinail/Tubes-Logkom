@@ -21,36 +21,40 @@ weapon(savethequeen, sorcerer, 100, 100).
 
 /* armor(nama, jobs required, max HP added, defend) */
 armor(robe, swordsman, 0, 5).
-armor(robe, archer, 0, 5).
-armor(robe, sorcerer, 0, 5).
 armor(brassarmor, swordsman, 20, 15).
-armor(brassarmor, archer, 20, 15).
-armor(brassarmor, sorcerer, 20, 15).
 armor(chainmail, swordsman, 50, 25).
-armor(chainmail, archer, 50, 25).
-armor(chainmail, sorcerer, 50, 25).
 armor(silverarmor, swordsman, 100, 50).
-armor(silverarmor, archer, 100, 50).
-armor(silverarmor, sorcerer, 100, 50).
 armor(dragonarmor, swordsman, 500, 200).
+
+armor(robe, archer, 0, 5).
+armor(brassarmor, archer, 20, 15).
+armor(chainmail, archer, 50, 25).
+armor(silverarmor, archer, 100, 50).
 armor(bloodarmor, archer, 1000, 200).
+
+armor(robe, sorcerer, 0, 5).
+armor(brassarmor, sorcerer, 20, 15).
+armor(chainmail, sorcerer, 50, 25).
+armor(silverarmor, sorcerer, 100, 50).
 armor(dreamrobe, sorcerer, 500, 100).
 
 /* accessory(nama, jobs required, max HP added, attack, defend) */
 accessory(bandanna, swordsman, 5, 0, 0).
-accessory(bandanna, archer, 5, 0, 0).
-accessory(bandanna, sorcerer, 5, 0, 0).
 accessory(cape, swordsman, 5, 5, 5).
-accessory(cape, archer, 5, 5, 5).
-accessory(cape, sorcerer, 5, 5, 5).
 accessory(goldemblem, swordsman, 10, 5, 10).
-accessory(goldemblem, archer, 10, 5, 10).
-accessory(goldemblem, sorcerer, 10, 5, 10).
 accessory(spiritbelt, swordsman, 10, 10, 10).
-accessory(spiritbelt, archer, 10, 10, 10).
-accessory(spiritbelt, sorcerer, 10, 10, 10).
 accessory(fullhelmet, swordsman, 25, 20, 25).
+
+accessory(bandanna, archer, 5, 0, 0).
+accessory(cape, archer, 5, 5, 5).
+accessory(goldemblem, archer, 10, 5, 10).
+accessory(spiritbelt, archer, 10, 10, 10).
 accessory(windhat, archer, 25, 15, 15).
+
+accessory(bandanna, sorcerer, 5, 0, 0).
+accessory(cape, sorcerer, 5, 5, 5).
+accessory(goldemblem, sorcerer, 10, 5, 10).
+accessory(spiritbelt, sorcerer, 10, 10, 10).
 accessory(elementalhat, sorcerer, 30, 20, 15).
 
 /* potion(nama, HP refill, attack, defense) */
