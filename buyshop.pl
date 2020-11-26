@@ -6,9 +6,9 @@ buyshop(Input_Items) :-
     SpaceItems < 100,
     Gold_remaining is Gold - 125,
     asserta(gold(Gold_remaining)),
-    gacha, !.
+    gachaSystem, !.
 
-gacha :-
+gachaSystem :-
     lvl(Level),
     Level < 10,
     job(Jobname),
@@ -16,7 +16,7 @@ gacha :-
     RateGacha is 1,
     storeGacha(TypeGacha, RateGacha, Level, Jobname).
 
-gacha :-
+gachaSystem :-
     lvl(Level),
     Level < 20,
     job(Jobname),
@@ -24,7 +24,7 @@ gacha :-
     random(1, 2, RateGacha),
     storeGacha(TypeGacha, RateGacha, Level, Jobname).
 
-gacha :-
+gachaSystem :-
     lvl(Level),
     Level < 30,
     job(Jobname),
@@ -32,7 +32,7 @@ gacha :-
     random(1, 3, RateGacha),
     storeGacha(TypeGacha, RateGacha, Level, Jobname).
 
-gacha :-
+gachaSystem :-
     lvl(Level),
     Level < 40,
     job(Jobname),
@@ -40,7 +40,7 @@ gacha :-
     random(1, 4, RateGacha),
     storeGacha(TypeGacha, RateGacha, Level, Jobname).
 
-gacha :-
+gachaSystem :-
     lvl(Level),
     Level < 50,
     job(Jobname),
