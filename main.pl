@@ -1,4 +1,11 @@
 /* include file .pl */
+:- include('batle.pl').
+:- include('buyshop.pl').
+:- include('enemy_Stats.pl').
+:- include('shop.pl').
+:- include('storeGachaAccessory.pl').
+:- include('storeGachaArmor.pl').
+:- include('storeGachaWeapon.pl').
 :- include('status.pl').
 :- include('help.pl').
 :- include('map.pl').

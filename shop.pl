@@ -1,11 +1,3 @@
-:- include('inventory.pl').
-:- include('items.pl').
-:- include('buyshop.pl').
-:- include('storeGachaArmor.pl').
-:- include('storeGachaWeapon.pl').
-:- include('storeGachaAccessory.pl').
-:- use_module(library(random)).
-
 init_shop :-
     write('7777777777777777777777777777777'), nl,
     write('                               '), nl,
