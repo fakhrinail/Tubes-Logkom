@@ -138,7 +138,7 @@ usePotion :-    (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
                 retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                 asserta(def(NewDefense))),
                 write(Item), write(' digunakan.'), nl;
-                \+(isInInventory(Item)) -> write('Potion tidak ada di inventory Anda.'), nl).
+                \+(isInInventory(Item)) -> write('Potion tidak ada di inventory Anda.'), nl.
 
 checkEquipment :-   write('Equipment Anda : '), nl,
                     weaponEquipped(Weapon), write('Weapon : '), write(Weapon), nl,

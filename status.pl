@@ -14,7 +14,7 @@ start :- write('Pilih Job yang diinginkan: '), nl,
         write('1. Swordsman'), nl,
         write('2. Sorcerer'), nl,
         write('3. Archer'), nl,
-        write('Masukkan job yang diinginkan'), nl,
+        write('Masukkan nomor job yang diinginkan'), nl,
         read(InputJob), 
         assignJob(InputJob),!.
 
@@ -110,7 +110,7 @@ levelUp :-
         asserta(lvl(NewLevel)),
         retract(expr(_)),
         asserta(expr(NewExp)),
-        write('Naik level menjadi '),
+        write('Naik level menjadi level '),
         write(Lvl),
         levelUp,
         !.

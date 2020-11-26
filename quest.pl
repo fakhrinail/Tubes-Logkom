@@ -208,6 +208,7 @@ questCompleted :-
     asserta(gold(NewGold)),
     retract(expr(_)),
     asserta(expr(NewExpr)),
+    levelUp,
     retract(isOnQuest(_)),
     asserta(isOnQuest(0)).
 
