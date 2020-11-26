@@ -93,8 +93,12 @@ levelUp :-
         expr(Exp),
         lvl(Lvl),
         ReqExp is Lvl*25,
-        write(ReqExp), nl,
-        write(Exp), nl,
+        Exp < ReqExp,
+        !.
+levelUp :-
+        expr(Exp),
+        lvl(Lvl),
+        ReqExp is Lvl*25,
         Exp >= ReqExp,
         NewLevel is Lvl+1,
         NewExp is Exp-ReqExp,
@@ -103,12 +107,13 @@ levelUp :-
         asserta(lvl(NewLevel)),
         retract(expr(_)),
         asserta(expr(NewExp)),
+        write("Naik level menjadi "),
+        write(Lvl),
         levelUp,
         !.
 
 inputStatsLvlUp :-
         job(JobName),
-        lvl(Lvl),
         JobName = swordsman,
         att(Att),
         specialatt(SpAtt),
@@ -125,16 +130,14 @@ inputStatsLvlUp :-
         retract(def(_)),
         asserta(def(NewDef)),
         retract(maxHP(_)),
-        asserta(maxHP(NewMaxHP)),
-        write ("Anda naik level menjadi "), write(Lvl).
+        asserta(maxHP(NewMaxHP)).
 inputStatsLvlUp :-
         job(JobName),
-        lvl(Lvl),
         JobName = sorcerer,
         att(Att),
         specialatt(SpAtt),
         def(Def),
-        MaxHP(MaxHP),
+        maxHP(MaxHP),
         NewAtt is Att+8,
         NewSpAtt is SpAtt+20,
         NewDef is Def+3,
@@ -146,16 +149,14 @@ inputStatsLvlUp :-
         retract(def(_)),
         asserta(def(NewDef)),
         retract(maxHP(_)),
-        asserta(maxHP(NewMaxHP)),
-        write ("Anda naik level menjadi "), write(Lvl).
+        asserta(maxHP(NewMaxHP)).
 inputStatsLvlUp :-
         job(JobName),
-        lvl(Lvl),
         JobName = archer,
         att(Att),
         specialatt(SpAtt),
         def(Def),
-        MaxHP(MaxHP),
+        maxHP(MaxHP),
         NewAtt is Att+15,
         NewSpAtt is SpAtt+5,
         NewDef is Def+3,
@@ -167,8 +168,7 @@ inputStatsLvlUp :-
         retract(def(_)),
         asserta(def(NewDef)),
         retract(maxHP(_)),
-        asserta(maxHP(NewMaxHP)),
-        write ("Anda naik level menjadi "), write(Lvl).
+        asserta(maxHP(NewMaxHP)).
 
 stats :-
         job(JobName), 
