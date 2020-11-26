@@ -22,7 +22,7 @@
 :- initialization(write('####################################################################')).
 :- initialization(nl).
 
-game_Menu :-
+gameMenu :-
         write('####################################################################'), nl,
         write('# 1. map         : menampilkan peta                                #'), nl,
         write('# 2. condition   : menampilkan kondisi pemain terkini              #'), nl,
@@ -32,16 +32,4 @@ game_Menu :-
         write('# 6. save        : menyimpan data permainan                        #'), nl,
         write('# 7. load        : memuat data permainan                           #'), nl,
         write('# 8. help        : menampilkan segala bantuan                      #'), nl,
-        write('####################################################################'), nl.
-
-shop_Menu :-
-        write('####################################################################'), nl,
-        write('# 1. gacha                      200  gold                          #'), nl,
-        write('# 2. potion                     50  gold                           #'), nl,
-        write('# 3. ether                      50  gold                           #'), nl,
-        write('# 4. antidote                   75  gold                           #'), nl,
-        write('# 5. anti paralyze              75 gold                            #'), nl,
-        write('# 6. x-Attack                   100 gold                           #'), nl,
-        write('# 7. x-Defense                  100 gold                           #'), nl,
-        write('# 8. exitShop                                                      #'), nl,
         write('####################################################################'), nl.
