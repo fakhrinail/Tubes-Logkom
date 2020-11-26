@@ -8,46 +8,6 @@ buyshop(Input_Items) :-
     asserta(gold(Gold_remaining)),
     gachaSystem, !.
 
-gachaSystem :-
-    lvl(Level),
-    Level < 10,
-    job(Jobname),
-    random(1, 3, TypeGacha),
-    RateGacha is 1,
-    storeGacha(TypeGacha, RateGacha, Level, Jobname).
-
-gachaSystem :-
-    lvl(Level),
-    Level < 20,
-    job(Jobname),
-    random(1, 3, TypeGacha),
-    random(1, 2, RateGacha),
-    storeGacha(TypeGacha, RateGacha, Level, Jobname).
-
-gachaSystem :-
-    lvl(Level),
-    Level < 30,
-    job(Jobname),
-    random(1, 3, TypeGacha),
-    random(1, 3, RateGacha),
-    storeGacha(TypeGacha, RateGacha, Level, Jobname).
-
-gachaSystem :-
-    lvl(Level),
-    Level < 40,
-    job(Jobname),
-    random(1, 3, TypeGacha),
-    random(1, 4, RateGacha),
-    storeGacha(TypeGacha, RateGacha, Level, Jobname).
-
-gachaSystem :-
-    lvl(Level),
-    Level < 50,
-    job(Jobname),
-    random(1, 3, TypeGacha),
-    random(1, 5, RateGacha),
-    storeGacha(TypeGacha, RateGacha, Level, Jobname).
-
 buyshop(Input_Items) :-
     Input_Items = 'gacha',
     write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
@@ -240,3 +200,42 @@ buyshop(Input_Items) :-
 buyshop(_) :- 
     write('Items tidak ada di dalam shop menu'), !.
     
+gachaSystem :-
+    lvl(Level),
+    Level < 10,
+    job(Jobname),
+    random(1, 3, TypeGacha),
+    RateGacha is 1,
+    storeGacha(TypeGacha, RateGacha, Level, Jobname).
+
+gachaSystem :-
+    lvl(Level),
+    Level < 20,
+    job(Jobname),
+    random(1, 3, TypeGacha),
+    random(1, 2, RateGacha),
+    storeGacha(TypeGacha, RateGacha, Level, Jobname).
+
+gachaSystem :-
+    lvl(Level),
+    Level < 30,
+    job(Jobname),
+    random(1, 3, TypeGacha),
+    random(1, 3, RateGacha),
+    storeGacha(TypeGacha, RateGacha, Level, Jobname).
+
+gachaSystem :-
+    lvl(Level),
+    Level < 40,
+    job(Jobname),
+    random(1, 3, TypeGacha),
+    random(1, 4, RateGacha),
+    storeGacha(TypeGacha, RateGacha, Level, Jobname).
+
+gachaSystem :-
+    lvl(Level),
+    Level < 50,
+    job(Jobname),
+    random(1, 3, TypeGacha),
+    random(1, 5, RateGacha),
+    storeGacha(TypeGacha, RateGacha, Level, Jobname).
