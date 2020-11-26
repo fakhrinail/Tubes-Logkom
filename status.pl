@@ -61,34 +61,114 @@ assignJob(_) :- write('Salah input'),!.
 inputStats(JobName) :- 
         JobName = swordsman,
         asserta(att(50)), 
+        asserta(specialatt(75,3)),
         asserta(def(50)), 
         asserta(currHP(100)), 
         asserta(maxHP(100)), 
         asserta(gold(100)), 
+        asserta(lvl(1)), 
         asserta(expr(0)).
 inputStats(JobName) :- 
         JobName = sorcerer, 
-        asserta(att(75)), 
+        asserta(att(40)), 
+        asserta(specialatt(100,3)),
         asserta(def(25)), 
         asserta(currHP(75)), 
         asserta(maxHP(75)), 
         asserta(gold(100)), 
+        asserta(lvl(1)), 
         asserta(expr(0)).
 inputStats(JobName) :- 
         JobName = archer, 
-        asserta(att(75)), 
-        asserta(def(50)), 
+        asserta(att(60)), 
+        asserta(specialatt(75,3)),
+        asserta(def(30)), 
         asserta(currHP(100)), 
         asserta(maxHP(100)), 
-        asserta(gold(100)), 
+        asserta(gold(100)),
+        asserta(lvl(1)), 
         asserta(expr(0)).
 
-inputItems(_, 0) :- !.
-inputItems(ItemName, 1) :- storeItem(ItemName),!.
-inputItems(ItemName, CountItems) :-
-        storeItem(ItemName), 
-        NewCountItems = CountItems-1,
-        inputItems(ItemName, NewCountItems), !.
+levelUp :-
+        expr(Exp),
+        lvl(Lvl),
+        ReqExp is Lvl*25,
+        Exp < ReqExp,
+        !.
+levelUp :-
+        expr(Exp),
+        lvl(Lvl),
+        ReqExp is Lvl*25,
+        Exp >= ReqExp,
+        NewLevel is Lvl+1,
+        NewExp is Exp-ReqExp,
+        inputStatsLvlUp,
+        retract(lvl(_)),
+        asserta(lvl(NewLevel)),
+        retract(expr(_)),
+        asserta(expr(NewExp)),
+        write("Naik level menjadi "),
+        write(Lvl),
+        levelUp,
+        !.
+
+inputStatsLvlUp :-
+        job(JobName),
+        JobName = swordsman,
+        att(Att),
+        specialatt(SpAtt),
+        def(Def),
+        maxHP(MaxHP),
+        NewAtt is Att+10,
+        NewSpAtt is SpAtt+4,
+        NewDef is Def+10,
+        NewMaxHP is MaxHP+65,
+        retract(att(_)),
+        asserta(att(NewAtt)),
+        retract(specialatt(_)),
+        asserta(specialatt(NewSpAtt)),
+        retract(def(_)),
+        asserta(def(NewDef)),
+        retract(maxHP(_)),
+        asserta(maxHP(NewMaxHP)).
+inputStatsLvlUp :-
+        job(JobName),
+        JobName = sorcerer,
+        att(Att),
+        specialatt(SpAtt),
+        def(Def),
+        maxHP(MaxHP),
+        NewAtt is Att+8,
+        NewSpAtt is SpAtt+20,
+        NewDef is Def+3,
+        NewMaxHP is MaxHP+50,
+        retract(att(_)),
+        asserta(att(NewAtt)),
+        retract(specialatt(_)),
+        asserta(specialatt(NewSpAtt)),
+        retract(def(_)),
+        asserta(def(NewDef)),
+        retract(maxHP(_)),
+        asserta(maxHP(NewMaxHP)).
+inputStatsLvlUp :-
+        job(JobName),
+        JobName = archer,
+        att(Att),
+        specialatt(SpAtt),
+        def(Def),
+        maxHP(MaxHP),
+        NewAtt is Att+15,
+        NewSpAtt is SpAtt+5,
+        NewDef is Def+3,
+        NewMaxHP is MaxHP+50,
+        retract(att(_)),
+        asserta(att(NewAtt)),
+        retract(specialatt(_)),
+        asserta(specialatt(NewSpAtt)),
+        retract(def(_)),
+        asserta(def(NewDef)),
+        retract(maxHP(_)),
+        asserta(maxHP(NewMaxHP)).
 
 stats :-
         job(JobName), 

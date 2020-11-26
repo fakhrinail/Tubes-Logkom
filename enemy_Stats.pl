@@ -1,6 +1,20 @@
 /* fakta enemy */
 :- dynamic(enemy_currHP/1).
 
+% deklarasi enemy
+% enemy(variabel_enemy,nama_enemy indeks_enemy);
+enemy(goblin,'a Goblin',1).
+enemy(slime,'a Slime',2).
+enemy(wolf,'a Wolf',3).
+enemy(witch,'a Witch',4).
+enemy(armoredGoblin,'an Armored Goblin',5).
+enemy(cubicSlime,'a Cubic Slime',6).
+enemy(werewolf,'a Werewolf',7).
+enemy(ogre,'an Ogre',8).
+enemy(cursedKnight,'a Cursed Knight',9).
+enemy(ultimaDragon,'an Ultima Dragon',10).
+enemy(tugasBesar,'Dungeon Boss',11).
+
 % maxHP enemy
 enemy_maxHP(goblin, 100).
 enemy_maxHP(slime, 60).
@@ -80,35 +94,35 @@ battle_exp(ultimaDragon, 25000).
 battle_exp(tugasBesar, 50000). % final boss
 
 % game combat
-enemy(goblin) :-
+create_enemy(goblin) :-
     asserta(enemy_currHP(100)).
 
-enemy(slime) :-
+create_enemy(slime) :-
     asserta(enemy_currHP(60)).
 
-enemy(wolf) :-
+create_enemy(wolf) :-
     asserta(enemy_currHP(400)).
 
-enemy(witch) :-
+create_enemy(witch) :-
     asserta(enemy_currHP(800)).
 
-enemy(armoredGoblin) :-
+create_enemy(armoredGoblin) :-
     asserta(enemy_currHP(1200)).
 
-enemy(cubicSlime) :-
+create_enemy(cubicSlime) :-
     asserta(enemy_currHP(1000)).
 
-enemy(werewolf) :-
+create_enemy(werewolf) :-
     asserta(enemy_currHP(2000)).
 
-enemy(ogre) :-
+create_enemy(ogre) :-
     asserta(enemy_currHP(4000)).
 
-enemy(cursedKnight) :-
+create_enemy(cursedKnight) :-
     asserta(enemy_currHP(8000)).
 
-enemy(ultimaDragon) :-
+create_enemy(ultimaDragon) :-
     asserta(enemy_currHP(12000)).
 
-enemy(tugasBesar) :-
+create_enemy(tugasBesar) :-
     asserta(enemy_currHP(25000)).
