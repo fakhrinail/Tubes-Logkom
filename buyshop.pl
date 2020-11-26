@@ -5,6 +5,7 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 125,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     gachaSystem, !.
 
@@ -19,10 +20,11 @@ buyshop(Input_Items) :-
     Gold >= 125,
     usedSpace(SpaceItems),
     SpaceItems < 100,
-    (Gold_remaining is Gold - 125,
-    storeItem(potion(medicine)),
+    Gold_remaining is Gold - 125,
+    retractall(gold(_)),
+    storeItem(medicine),
     asserta(gold(Gold_remaining)),
-    write('Terima kasih sudah membeli !'), nl), !.
+    write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'medicine',
@@ -35,8 +37,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 250,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(highmedicine)),
+    storeItem(highmedicine),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -50,8 +53,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 500,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(megamedicine)),
+    storeItem(megamedicine),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -65,8 +69,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 1000,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(xtramedicine)),
+    storeItem(xtramedicine),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -80,8 +85,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 125,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(ether)),
+    storeItem(ether),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -95,8 +101,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 250,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(highether)),
+    storeItem(highether),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -110,8 +117,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 500,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(megaether)),
+    storeItem(megaether),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -125,8 +133,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 1000,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(xtraether)),
+    storeItem(xtraether),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -140,8 +149,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 250,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(elixir)),
+    storeItem(elixir),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -155,8 +165,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 500,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(highelixir)),
+    storeItem(highelixir),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -170,8 +181,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 1000,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(megaelixir)),
+    storeItem(megaelixir),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
@@ -185,8 +197,9 @@ buyshop(Input_Items) :-
     usedSpace(SpaceItems),
     SpaceItems < 100,
     Gold_remaining is Gold - 2000,
+    retractall(gold(_)),
     asserta(gold(Gold_remaining)),
-    storeItem(potion(xtraelixir)),
+    storeItem(xtraelixir),
     write('Terima kasih sudah membeli !'), nl, !.
 
 buyshop(Input_Items) :-
