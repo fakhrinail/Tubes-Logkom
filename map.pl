@@ -91,7 +91,7 @@ a :-
     retract(position(player,_,_)),
     asserta(position(player,Xa,Y)),
     write('You move west'),nl,
-    set_enemy_found,!.
+    set_enemy_random,!.
 a :-
     write('Cant go there'),nl.
 
@@ -104,7 +104,7 @@ d :-
     retract(position(player,_,_)),
     asserta(position(player,Xa,Y)),
     write('You move east'),nl,
-    set_enemy_found,!.
+    set_enemy_random,!.
 d :-
     write('Cant go there'),nl.
 
@@ -117,7 +117,7 @@ s :-
     retract(position(player,_,_)),
     asserta(position(player,X,Ya)),
     write('You move south'),nl,
-    set_enemy_found,!.
+    set_enemy_random,!.
 s :-
     write('Cant go there'),nl.
 
@@ -130,7 +130,7 @@ w :-
     retract(position(player,_,_)),
     asserta(position(player,X,Ya)),
     write('You move north'),nl,
-    set_enemy_found,!.
+    set_enemy_random,!.
 w :-
     write('Cant go there'),nl.
 
@@ -207,22 +207,73 @@ near_quest :- near(quest).
 % seharusnya jadi auto serang
 near_boss :- near(dungeonboss).
 
-% set_enemy_found merupakan fungsi randomizer yang secara acak memanggil batle mechanism
+% set_enemy_random merupakan fungsi randomizer yang secara acak memanggil batle mechanism
 % random_enemy untuk mengacak enemy yang muncul
 % dipanggil setiap berpindah tile
 
 :- include('enemy_Stats.pl').
 
+:- dynamic(lvl/1).
 
-
-set_enemy_found :-
+set_enemy_random :-
     random(1,101,X),
     X < 33,
     random_enemy,!.
-set_enemy_found.
 
-random_enemy :-     % chance untuk goblin,wolf dan slime masi sama
-    random(1,12,X),
+set_enemy_random.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 1, Lvl =< 4,
+    random(1,3,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 5, Lvl =< 9,
+    random(1,4,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 10, Lvl =< 14,
+    random(3,5,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 15, Lvl =< 19,
+    random(4,8,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 20 , Lvl =< 29,
+    random(5,9,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 30, Lvl =< 39,
+    random(7,10,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.
+
+random_enemy :-
+    lvl(Lvl),
+    Lvl >= 40,
+    random(8,11,X),
     enemy(_,Name,X),
     write('You find '), write(Name),write('!!'),
     nl,!.
