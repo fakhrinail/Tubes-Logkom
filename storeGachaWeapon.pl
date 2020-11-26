@@ -1,75 +1,120 @@
-% Use gacha equipment
-storeGacha(OutputGacha) :-
-    OutputGacha = 1,
+% Use gacha weapon
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = swordsman,
+    Level > 0,
+    RateGacha = 1,
     storeItem(weapon(longsword)),
     write('Kamu mendapatkan longsword !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 2,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = swordsman,
+    Level > 9,
+    RateGacha = 2,
     storeItem(weapon(shiningsword)),
     write('Kamu mendapatkan shiningsword !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 3,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = swordsman,
+    Level > 19,
+    RateGacha = 3,
     storeItem(weapon(imperialsword)),
     write('Kamu mendapatkan imperialsword !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 4,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = swordsman,
+    Level > 29,
+    RateGacha = 4,
     storeItem(weapon(excalibur)),
     write('Kamu mendapatkan excalibur !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 5,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = swordsman,
+    Level > 39,
+    RateGacha = 5,
     storeItem(weapon(ultimaweapon)),
     write('Kamu mendapatkan ultimaweapon !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 6,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = archer,
+    Level > 0,
+    RateGacha = 1,
     storeItem(weapon(woodenbow)),
     write('Kamu mendapatkan woodenbow !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 7,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = archer,
+    Level > 9,
+    RateGacha = 2,
     storeItem(weapon(platinumbow)),
     write('Kamu mendapatkan platinumbow !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 8,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = archer,
+    Level > 19,
+    RateGacha = 3,
     storeItem(weapon(izanami)),
     write('Kamu mendapatkan izanami !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 9,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = archer,
+    Level > 29,
+    RateGacha = 4,
     storeItem(weapon(omegabow)),
     write('Kamu mendapatkan omegabow !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 10,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = archer,
+    Level > 39,
+    RateGacha = 5,
     storeItem(weapon(savetheking)),
     write('Kamu mendapatkan savetheking !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 11,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = sorcerer,
+    Level > 0,
+    RateGacha = 1,
     storeItem(weapon(magestaff)),
     write('Kamu mendapatkan magestaff !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 12,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = sorcerer,
+    Level > 9,
+    RateGacha = 2,
     storeItem(weapon(wizardstaff)),
     write('Kamu mendapatkan wizardstaff !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 13,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = sorcerer,
+    Level > 19,
+    RateGacha = 3,
     storeItem(weapon(darkstaff)),
     write('Kamu mendapatkan darkstaff !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 14,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = sorcerer,
+    Level > 29,
+    RateGacha = 4,
     storeItem(weapon(fantasia)),
     write('Kamu mendapatkan fantasia !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 15,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 1,
+    Jobname = sorcerer,
+    Level > 39,
+    RateGacha = 5,
     storeItem(weapon(savethequeen)),
     write('Kamu mendapatkan savethequeen !').
