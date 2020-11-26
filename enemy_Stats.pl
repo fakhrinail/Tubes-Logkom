@@ -40,19 +40,6 @@ enemy_DEF(cursedKnight, 900).
 enemy_DEF(ultimaDragon, 600).
 enemy_DEF(tugasBesar, 900). % final boss
 
-% special atk enemy
-enemy_SPATK(goblin, 50, 60).
-enemy_SPATK(slime, 30, 60).
-enemy_SPATK(wolf, 100, 120).
-enemy_SPATK(witch, 200, 60).
-enemy_SPATK(armoredGoblin, 200, 120).
-enemy_SPATK(cubicSlime, 300, 120).
-enemy_SPATK(werewolf, 500, 120).
-enemy_SPATK(ogre, 3000, 240).
-enemy_SPATK(cursedKnight, 1000, 120).
-enemy_SPATK(ultimaDragon, 3000, 180).
-enemy_SPATK(tugasBesar, 5000, 180). % final boss
-
 % lvl enemy
 enemy_lvl(goblin, 5).
 enemy_lvl(slime, 5).
