@@ -1,6 +1,7 @@
 /* include file .pl */
-:- include('batle.pl').
+:- include('battle.pl').
 :- include('buyshop.pl').
+:- include('cheat.pl').
 :- include('enemy_Stats.pl').
 :- include('shop.pl').
 :- include('storeGachaAccessory.pl').
