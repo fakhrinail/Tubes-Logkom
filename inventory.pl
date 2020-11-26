@@ -2,6 +2,9 @@
 
 :- dynamic(usedSpace/1).
 :- dynamic(stored/2).
+:- dynamic(weaponEquipped/1).
+:- dynamic(armorEquipped/1).
+:- dynamic(accessoryEquipped/1).
 
 inventory(X) :- usedSpace(X).
 
@@ -31,10 +34,6 @@ inventory :- write('Kapasitas inventory : '), inventory(X), write(X), write('/')
              forall((isInInventory(Item)), 
              (countItemInventory(Item, CountItem), write(Item), write(' ('), write(CountItem), write(') '), nl)), nl.
 
-:- dynamic(weaponEquipped/1).
-:- dynamic(armorEquipped/1).
-:- dynamic(accessoryEquipped/1).
-
 equipWeapon(Item) :-    (isInInventory(Item), weapon(Item, Class, Attack, Defense),
                         job(Class) -> 
                         (weaponEquipped(Equipped), Equipped \== none -> unequipWeapon(_);
@@ -58,7 +57,7 @@ unequipWeapon(Item) :-  (weaponEquipped(Item) -> (weapon(Item, Class, Attack, De
                         (stored(Item,X) -> retract(stored(Item,X)), 
                         Y is X + 1, asserta(stored(Item, Y));
                         asserta(stored(Item,1))), asserta(weaponEquipped(none)),
-                        inventory(UsedSpace), Used < 100,
+                        inventory(UsedSpace), UsedSpace < 100,
                         retract(weaponEquipped(Item)), retract(usedSpace(UsedSpace)),
                         NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace)),
                         write(Item), write(' dilepas.'), nl;
@@ -87,7 +86,7 @@ unequipArmor(Item) :-  (armorEquipped(Item) -> (armor(Item, Class, MaxHP, Defens
                         (stored(Item,X) -> retract(stored(Item,X)), 
                         Y is X + 1, asserta(stored(Item, Y));
                         asserta(stored(Item,1))), asserta(armorEquipped(none)),
-                        inventory(UsedSpace), Used < 100,
+                        inventory(UsedSpace), UsedSpace < 100,
                         retract(armorEquipped(Item)), retract(usedSpace(UsedSpace)),
                         NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace)),
                         write(Item), write(' dilepas.'), nl;
@@ -120,25 +119,25 @@ unequipAccessory(Item) :-   (accessoryEquipped(Item) -> (accessory(Item, Class, 
                             (stored(Item,X) -> retract(stored(Item,X)), 
                             Y is X + 1, asserta(stored(Item, Y));
                             asserta(stored(Item,1))), asserta(accessoryEquipped(none)),
-                            inventory(UsedSpace), Used < 100,
+                            inventory(UsedSpace), UsedSpace < 100,
                             retract(accessoryEquipped(Item)), retract(usedSpace(UsedSpace)),
                             NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace)),
                             write(Item), write(' dilepas.'), nl;
                             write('Anda sedang tidak menggunakan aksesoris ini.'), nl).
 
-usePotion :-    (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
-                -> retract(stored(Item,X)), Y is X-1, asserta(stored(Item, Y)),
-                retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace-1, asserta(usedSpace(NewUsedSpace)),
-                retract(currHP(CurrentHP)), NewHPRefill is CurrentHP + RefillHP,
-                (NewHPRefill > MaxHP, NewHP is MaxHP, !;
-                NewHP is NewHPRefill, !),
-                asserta(currHP(NewHP)),
-                retract(att(CurrentAttack)), NewAttack is CurrentAttack + Attack,
-                asserta(att(NewAttack)),
-                retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
-                asserta(def(NewDefense))),
-                write(Item), write(' digunakan.'), nl;
-                \+(isInInventory(Item)) -> write('Potion tidak ada di inventory Anda.'), nl.
+usePotion(Item) :-  (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
+                    -> retract(stored(Item,X)), Y is X-1, asserta(stored(Item, Y)),
+                    retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace-1, asserta(usedSpace(NewUsedSpace)),
+                    retract(currHP(CurrentHP)), NewHPRefill is CurrentHP + RefillHP,
+                    (NewHPRefill > MaxHP, NewHP is MaxHP, !;
+                    NewHP is NewHPRefill, !),
+                    asserta(currHP(NewHP)),
+                    retract(att(CurrentAttack)), NewAttack is CurrentAttack + Attack,
+                    asserta(att(NewAttack)),
+                    retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
+                    asserta(def(NewDefense))),
+                    write(Item), write(' digunakan.'), nl;
+                    \+(isInInventory(Item)) -> write('Potion tidak ada di inventory Anda.'), nl.
 
 checkEquipment :-   write('Equipment Anda : '), nl,
                     weaponEquipped(Weapon), write('Weapon : '), write(Weapon), nl,

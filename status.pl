@@ -24,12 +24,14 @@ assignJob(InputJob) :-
         asserta(job(swordsman)),
         asserta(usedSpace(0)),
         asserta(isOnQuest(0)),
-        storeItem(longsword),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
+        asserta(weaponEquipped(longsword)),
+        asserta(armorEquipped(none)),
+        asserta(accessoryEquipped(none)),
         write('Job Anda adalah Swordsman'), inputStats(swordsman), !.
 assignJob(InputJob) :- 
         InputJob = 2, 
@@ -37,12 +39,14 @@ assignJob(InputJob) :-
         asserta(job(sorcerer)),
         asserta(usedSpace(0)),
         asserta(isOnQuest(0)),
-        storeItem(magestaff),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
+        asserta(weaponEquipped(magestaff)),
+        asserta(armorEquipped(none)),
+        asserta(accessoryEquipped(none)),
         write('Job Anda adalah Sorcerer'), 
         inputStats(sorcerer), !.
 assignJob(InputJob) :- 
@@ -51,12 +55,14 @@ assignJob(InputJob) :-
         asserta(job(archer)), 
         asserta(usedSpace(0)),
         asserta(isOnQuest(0)),
-        storeItem(woodenbow),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
+        asserta(weaponEquipped(woodenbow)),
+        asserta(armorEquipped(none)),
+        asserta(accessoryEquipped(none)),
         write('Job Anda adalah Archer'), 
         inputStats(archer), !.
 assignJob(_) :- write('Salah input'),!.
