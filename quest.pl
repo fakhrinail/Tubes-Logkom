@@ -12,6 +12,17 @@
 :- dynamic(rewardGold).
 :- dynamic(rewardExp).
 
+(jmlGoblin(0)).
+(jmlSlime(0)).
+(jmlWolf(0)).
+(jmlWitch(0)).
+(jmlArmoredGoblin(0)).
+(jmlCubicSlime(0)).
+(jmlWerewolf(0)).
+(jmlOgre(0)).
+(jmlCursedKnight(0)).
+(jmlUltimaDragon(0)).
+
 isOnQuest(0). % tanda gaada quest
 
 quest :- 
@@ -174,9 +185,10 @@ quest :-
     Lvl > 50,
     write("Udah OP langsung bantai boss").
 
-% cek quest complete setiap habis battle
+% ngasih reward quest
 questCompleted :-
     isOnQuest = 1,
+    isQuestCompleted,
     gold(Gold),
     expr(Expr),
     NewGold is Gold+RewardGold,
@@ -188,3 +200,26 @@ questCompleted :-
     retract(isOnQuest(_)),
     asserta(isOnQuest(0)),
     % kasi rewards
+
+% cek isQuestCompleted tiap habis battle
+isQuestCompleted :-
+    (jmlGoblin(targetGoblin)),
+    (jmlSlime(targetSlime)),
+    (jmlWolf(targetWolf)),
+    (jmlWitch(targetWitch)),
+    (jmlArmoredGoblin(targetArmoredGoblin)),
+    (jmlCubicSlime(targetCubicSlime)),
+    (jmlWerewolf(targetWerewolf)),
+    (jmlOgre(targetOgre)),
+    (jmlCursedKnight(targetCursedKnight)),
+    (jmlUltimaDragon(targetUltimaDragon)),
+    targetGoblin = 0,
+    targetSlime = 0,
+    targetWolf = 0,
+    targetWerewolf = 0,
+    targetWitch = 0,
+    targetArmoredGoblin = 0,
+    targetCubicSlime = 0,
+    targetOgre = 0,
+    targetCursedKnight = 0,
+    targetUltimaDragon = 0.
