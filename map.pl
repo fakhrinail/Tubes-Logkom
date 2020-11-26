@@ -231,7 +231,6 @@ near_boss :- near(dungeonboss).
 % random_enemy untuk mengacak enemy yang muncul
 % dipanggil setiap berpindah tile
 
-:- dynamic(lvl/1).
 
 set_enemy_random :-
     \+(near_boss),
