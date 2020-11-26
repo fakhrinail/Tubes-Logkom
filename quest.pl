@@ -22,13 +22,12 @@
 (jmlOgre(0)).
 (jmlCursedKnight(0)).
 (jmlUltimaDragon(0)).
+rewardExp(0).
+rewardGold(0).
 
-isOnQuest(0). % tanda gaada quest
-
-quest :- 
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
-    write("Berhasil ambil quest"),
     lvl(Lvl),
     Lvl =< 5,
     random(1,4,X),
@@ -37,16 +36,16 @@ quest :-
     random(1,4,Y),
     retract(jmlSlime(_)),
     asserta(jmlSlime(Y)),
-    retract(rewardGold(_)),
     RewardGold is (X+Y)*10,
-    asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
     RewardExp is (X+Y)*10,
+    retract(rewardGold(_)),
+    asserta(rewardGold(RewardGold)),
+    retract(rewardExp(_)),
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(X), write(" Slime dan "), write(Y), write(" Goblin untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Slime dan '), write(Y), write(' Goblin untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -63,13 +62,13 @@ quest :-
     retract(rewardGold(_)),
     RewardGold is (X+Y+Z)*15,
     asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
+    retract((_)),
     RewardExp is (X+Y+Z)*15,
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(X), write(" Slime, "), write(Y), write(" Goblin dan "), write(Z), write(" Wolf untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -83,13 +82,13 @@ quest :-
     retract(rewardGold(_)),
     RewardGold is (X+Y)*20,
     asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
+    retract((_)),
     RewardExp is (X+Y)*20,
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(X), write(" Wolf dan "), write(Y), write(" Witch untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Wolf dan '), write(Y), write(' Witch untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -109,13 +108,13 @@ quest :-
     retract(rewardGold(_)),
     RewardGold is (W+X+Y+Z)*25,
     asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
+    retract((_)),
     RewardExp is (W+X+Y+Z)*25,
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(W), write(" Witch, "), write(X), write(" Armored Goblin, "), write(Y), write(" Cubic Slime dan "), write(Z), write(" Werewolf untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(W), write(' Witch, '), write(X), write(' Armored Goblin, '), write(Y), write(' Cubic Slime dan '), write(Z), write(' Werewolf untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -135,13 +134,13 @@ quest :-
     retract(rewardGold(_)),
     RewardGold is (W+X+Y+Z)*30,
     asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
+    retract((_)),
     RewardExp is (W+X+Y+Z)*30,
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(W), write(" Armored Goblin, "), write(X), write(" Cubic Slime, "), write(Y), write(" Werewolf dan "), write(Z), write(" Ogre untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(W), write(' Armored Goblin, '), write(X), write(' Cubic Slime, '), write(Y), write(' Werewolf dan '), write(Z), write(' Ogre untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -158,13 +157,13 @@ quest :-
     retract(rewardGold(_)),
     RewardGold is (X+Y+Z)*50,
     asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
+    retract((_)),
     RewardExp is (X+Y+Z)*50,
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(X), write(" Werewolf, "), write(Y), write(" Ogre dan "), write(Z), write(" Cursed Knight untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Werewolf, '), write(Y), write(' Ogre dan '), write(Z), write(' Cursed Knight untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -181,18 +180,18 @@ quest :-
     retract(rewardGold(_)),
     RewardGold is (X+Y+Z)*100,
     asserta(rewardGold(RewardGold)),
-    retract(rewardGExp(_)),
+    retract((_)),
     RewardExp is (X+Y+Z)*100,
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write("Selamat Anda beruntung! Kalahkan "), write(X), write(" Ogre, "), write(Y), write(" Cursed Knight dan "), write(Z), write(" Ultima Dragon untuk dapatkan reward").
-quest :- 
+    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Ogre, '), write(Y), write(' Cursed Knight dan '), write(Z), write(' Ultima Dragon untuk dapatkan reward').
+assignQuest :- 
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
     Lvl > 50,
-    write("Udah OP langsung bantai boss").
+    write('Udah OP langsung bantai boss').
 
 % ngasih reward quest
 questCompleted :-
@@ -209,6 +208,7 @@ questCompleted :-
     asserta(gold(NewGold)),
     retract(expr(_)),
     asserta(expr(NewExpr)),
+    levelUp,
     retract(isOnQuest(_)),
     asserta(isOnQuest(0)).
 
