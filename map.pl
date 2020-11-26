@@ -91,7 +91,7 @@ a :-
     retract(position(player,_,_)),
     asserta(position(player,Xa,Y)),
     write('You move west'),nl,
-    enemy_found,!.
+    set_enemy_found,!.
 a :-
     write('Cant go there'),nl.
 
@@ -104,7 +104,7 @@ d :-
     retract(position(player,_,_)),
     asserta(position(player,Xa,Y)),
     write('You move east'),nl,
-    enemy_found,!.
+    set_enemy_found,!.
 d :-
     write('Cant go there'),nl.
 
@@ -117,7 +117,7 @@ s :-
     retract(position(player,_,_)),
     asserta(position(player,X,Ya)),
     write('You move south'),nl,
-    enemy_found,!.
+    set_enemy_found,!.
 s :-
     write('Cant go there'),nl.
 
@@ -130,7 +130,7 @@ w :-
     retract(position(player,_,_)),
     asserta(position(player,X,Ya)),
     write('You move north'),nl,
-    enemy_found,!.
+    set_enemy_found,!.
 w :-
     write('Cant go there'),nl.
 
@@ -207,28 +207,22 @@ near_quest :- near(quest).
 % seharusnya jadi auto serang
 near_boss :- near(dungeonboss).
 
-% enemy_found merupakan fungsi randomizer yang secara acak memanggil batle mechanism
+% set_enemy_found merupakan fungsi randomizer yang secara acak memanggil batle mechanism
 % random_enemy untuk mengacak enemy yang muncul
 % dipanggil setiap berpindah tile
 
-% mungkin nanti bisa di tingkkatkan lagi dengan pasang dyamic untuk mengubah chance datangnya enemy sebagai pengatur tingkat kesulitan
+:- include('enemy_Stats.pl').
+
+
+
+set_enemy_found :-
+    random(1,101,X),
+    X < 33,
+    random_enemy,!.
+set_enemy_found.
 
 random_enemy :-     % chance untuk goblin,wolf dan slime masi sama
-    random(1,4,X),
-    X =:= 1,
-    write('You find a slime!!'), nl,!.
-random_enemy :-
-    random(1,4,X),
-    X =:= 2,
-    write('You find a goblin!!'), nl,!.
-random_enemy :-
-    random(1,4,X),
-    X =:= 3,
-    write('You find a wolf!!'), nl,!.
-
-enemy_found :-
-    random(0,100,X),
-    X < 30,
-    random_enemy,!.
-
-enemy_found.
+    random(1,12,X),
+    enemy(_,Name,X),
+    write('You find '), write(Name),write('!!'),
+    nl,!.

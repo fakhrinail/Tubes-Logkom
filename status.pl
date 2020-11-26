@@ -113,7 +113,7 @@ inputStatsLvlUp :-
         att(Att),
         specialatt(SpAtt),
         def(Def),
-        MaxHP(MaxHP),
+        maxHP(MaxHP),
         NewAtt is Att+10,
         NewSpAtt is SpAtt+4,
         NewDef is Def+10,
