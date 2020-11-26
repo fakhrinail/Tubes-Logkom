@@ -10,6 +10,7 @@ init_shop :-
     write('7777777777777777777777777777777'), nl, !.
 
 shop :-
+    near(shop),
     init_shop, nl,
     write('Selamat datang di Secret Shop ! owo)7 '), nl,
     write('Apa yang ingin kamu beli?'), nl,
@@ -28,3 +29,6 @@ shop :-
     write('13. xtraelixir   (2000 gold)'), nl,
     write('14. quit'), nl,
     read(Input_Items), buyshop(Input_Items), !.
+
+shop :-
+    write('You are not around shop now !').

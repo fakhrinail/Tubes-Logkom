@@ -26,6 +26,7 @@ rewardExp(0).
 rewardGold(0).
 
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -46,6 +47,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Slime dan '), write(Y), write(' Goblin untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -69,6 +71,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -89,6 +92,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Wolf dan '), write(Y), write(' Witch untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -115,6 +119,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(W), write(' Witch, '), write(X), write(' Armored Goblin, '), write(Y), write(' Cubic Slime dan '), write(Z), write(' Werewolf untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -141,6 +146,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(W), write(' Armored Goblin, '), write(X), write(' Cubic Slime, '), write(Y), write(' Werewolf dan '), write(Z), write(' Ogre untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -164,6 +170,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Werewolf, '), write(Y), write(' Ogre dan '), write(Z), write(' Cursed Knight untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -187,6 +194,7 @@ assignQuest :-
     asserta(isOnQuest(1)),
     write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Ogre, '), write(Y), write(' Cursed Knight dan '), write(Z), write(' Ultima Dragon untuk dapatkan reward').
 assignQuest :- 
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
@@ -195,6 +203,7 @@ assignQuest :-
 
 % ngasih reward quest
 questCompleted :-
+    near(quest),
     isOnQuest(Status),
     Status is 0,
     isQuestCompleted,

@@ -68,7 +68,7 @@ check_condition_enemy :-
     battle_exp(Enemy, Exp),
     enemy_currHP(X),
     X =< 0,
-    write('Enemy Defeaed!'),nl,
+    write('Enemy Defeated!'),nl,
     modifyplayerexp(Exp),
     modifyplayergold(Gold),
     format('You earn ~p gold and ~p exp !!',[Gold, Exp]),nl,
