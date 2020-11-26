@@ -1,35 +1,52 @@
-% Use gacha equipment
-storeGacha(OutputGacha) :-
-    OutputGacha = 16,
+% Use gacha armor
+storeGacha(TypeGacha, RateGacha, Level, _) :-
+    TypeGacha = 2,
+    Level > 0,
+    RateGacha = 1,
     storeItem(armor(robe)),
     write('Kamu mendapatkan robe !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 17,
+storeGacha(TypeGacha, RateGacha, Level, _) :-
+    TypeGacha = 2,
+    Level > 9,
+    RateGacha = 2,
     storeItem(armor(brassarmor)),
     write('Kamu mendapatkan brassarmor !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 18,
+storeGacha(TypeGacha, RateGacha, Level, _) :-
+    TypeGacha = 2,
+    Level > 19,
+    RateGacha = 3,
     storeItem(armor(chainmail)),
     write('Kamu mendapatkan chainmail !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 19,
+storeGacha(TypeGacha, RateGacha, Level, _) :-
+    TypeGacha = 2,
+    Level > 29,
+    RateGacha = 4,
     storeItem(armor(silverarmor)),
     write('Kamu mendapatkan silverarmor !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 20,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 2,
+    Jobname = swordsman,
+    Level > 39,
+    RateGacha = 5,
     storeItem(armor(dragonarmor)),
     write('Kamu mendapatkan dragonarmor !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 21,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 2,
+    Jobname = archer,
+    Level > 39,
+    RateGacha = 5,
     storeItem(armor(bloodarmor)),
     write('Kamu mendapatkan bloodarmor !').
 
-storeGacha(OutputGacha) :-
-    OutputGacha = 22,
+storeGacha(TypeGacha, RateGacha, Level, Jobname) :-
+    TypeGacha = 2,
+    Jobname = sorcerer,
+    Level > 39,
+    RateGacha = 5,
     storeItem(armor(dreamrobe)),
     write('Kamu mendapatkan dreamrobe !').
