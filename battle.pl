@@ -167,7 +167,7 @@ specialAttack :-
     T =< 3,
     write('Cant use Special attack'),nl,!.
 
-/******************************** Special Attack ********************************/
+/******************************** Managing Damage ********************************/
 managingDamage(Damage, Result) :-
     Damage < 0,
     Result is 0,!.
