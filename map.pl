@@ -240,8 +240,8 @@ set_enemy_random :-
 
 set_enemy_random :-
     near_boss,
-    write('You feel being watched......'), 
-    sleep(4),
+    write('You feel being watched.....'),nl,
+    sleep(3),
     write('The Dungeon Boss appears !!!'),
     init_battle(tugasBesar),!.
 

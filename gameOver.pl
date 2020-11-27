@@ -11,7 +11,7 @@ gameOver :-
     write('                                         1$$$$$$  |                                                  1$$$$$$  |                                                                   '), nl,
     write('                                          1______1                                                    1______1                                                                    '), nl, nl,
     write('Are you wanna play again? Y/N?'), nl,
-    read(Input_restart), restart(Input_restart), !.
+    get_char(Input_restart), restart(Input_restart), !.
 
 restart(Input_restart) :-
     Input_restart = 'Y',
@@ -20,4 +20,8 @@ restart(Input_restart) :-
 restart(Input_restart) :-
     Input_restart = 'N',
     write('Thanks for playing our game !'), nl,
-    write('See you in our next game !'), nl, !.
+    write('See you in our next game !'), nl, halt,!.
+
+restart(Input_restart) :-
+    write('Wrong Input'),nl,
+    get_char(Input_restart), restart(Input_restart),!.
