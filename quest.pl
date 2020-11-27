@@ -32,7 +32,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime and '), write(Y), write(' Goblin to get your reward'),!.
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Goblin and '), write(Y), write(' Slime to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -56,7 +56,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf to get your reward'),!.
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Goblin, '), write(Y), write(' Slime and '), write(Z), write(' Wolf to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -197,7 +197,8 @@ questCompleted :-
     expr(Expr),
     rewardGold(RewardGold),
     rewardExp(RewardExp),
-    write('Your quest is complete! You get '), 
+    write('Your quest is complete!'), nl,
+    write('You get '),
     write(RewardGold), 
     write(' gold and '), 
     write(RewardExp), 
