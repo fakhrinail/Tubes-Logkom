@@ -94,8 +94,9 @@ run :-
     def(Player_def),
     enemy_ATK(Enemy,Enemy_att),
     Damage is Enemy_att - Player_def,
-    modifyplayerHP(-Damage),
-    format('You took ~p damages!!\n',[Damage]),
+    managingDamage(Damage,Realdamage),
+    modifyplayerHP(-Realdamage),
+    format('You took ~p damages!!\n',[Realdamage]),
     random(0,101,Chance),                   % untuk chance gagal run
     Chance < 90,                            % chance gagal 10 persen
     write('You run for your life....'),
@@ -117,8 +118,9 @@ attack :-
     att(Player_att),
     enemy_DEF(Enemy,Enemy_def),
     DamagetoEnemy is Player_att - Enemy_def,
-    format('You deal ~p damages !',[DamagetoEnemy]),nl,
-    modifyenemyHP(-DamagetoEnemy),
+    managingDamage(DamagetoEnemy,Realdamage)
+    format('You deal ~p damages !',[Realdamage]),nl,
+    modifyenemyHP(-Realdamage),
     check_condition_enemy,
     modifyspcAttTurn(1),
     enemy_turn,!.
@@ -132,8 +134,9 @@ enemy_turn :-
     def(Player_def),
     enemy_ATK(Enemy,Enemy_att),
     DamagetoPlayer is Enemy_att - Player_def,
-    format('You took ~p damages !',[DamagetoPlayer]),nl,
-    modifyplayerHP(-DamagetoPlayer),
+    managingDamage(DamagetoPlayer,Realdamage),
+    format('You took ~p damages !',[Realdamage]),nl,
+    modifyplayerHP(-Realdamage),
     check_condition_player,!.
 
 enemy_turn :-
@@ -164,3 +167,10 @@ specialAttack :-
     spcAttTurn(T),
     T =< 3,
     write('Cant use Special attack'),nl,!.
+
+/******************************** Special Attack ********************************/
+managingDamage(Damage, Result) :-
+    Damage < 0,
+    Result is 0,!.
+
+managingDamage(Damage,Damage).
