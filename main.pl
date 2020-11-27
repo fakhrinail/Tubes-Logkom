@@ -13,6 +13,7 @@
 :- include('inventory.pl').
 :- include('items.pl').
 :- include('quest.pl').
+:- include('gameOver.pl').
 :- initialization(nl).
 :- initialization(write('                        [ Welcome to My World ]                     ')).
 :- initialization(nl).

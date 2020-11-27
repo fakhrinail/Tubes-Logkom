@@ -83,12 +83,12 @@ check_condition_player :-
     X =< 0,
     write('You DIED !!!'),nl,
     write('Game Over.....'),nl,
-    game_Over,!.    % memanggil mekanise game over
+    gameOver,!.    % memanggil mekanise game over
 
 check_condition_player.
 
 /******************************** RUN!!!! ************************************/
-run :-
+run :-      % run success
     enemy_spawned(Enemy),
     def(Player_def),
     enemy_ATK(Enemy,Enemy_att),
@@ -96,13 +96,25 @@ run :-
     managingDamage(Damage,Realdamage),
     modifyplayerHP(-Realdamage),
     format('You took ~p damages!!\n',[Realdamage]),
+    currHP(X),X > 0,
     random(0,101,Chance),                   % untuk chance gagal run
     Chance < 90,                            % chance gagal 10 persen
     write('You run for your life....'),
     modifyspcAttTurn(1),
     despawn_enemy,!.
 
-run :-
+run :-      % run then dead
+    enemy_spawned(Enemy),
+    def(Player_def),
+    enemy_ATK(Enemy,Enemy_att),
+    Damage is Enemy_att - Player_def,
+    managingDamage(Damage,Realdamage),
+    modifyplayerHP(-Realdamage),
+    format('You took ~p damages!!\n',[Realdamage]),
+    currHP(X),X < 0,
+    check_condition_player,!.
+
+run :-  % mau kabur tapi ga ada yg ngejar
     \+(enemy_spawned(_)),
     write('There is no enemy'),nl,!.
 
