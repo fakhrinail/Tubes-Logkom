@@ -128,7 +128,7 @@ unequipAccessory(Item) :-   (accessoryEquipped(Item) -> (accessory(Item, Class, 
 usePotion(Item) :-  (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
                     -> retract(stored(Item,X)), Y is X-1, asserta(stored(Item, Y)),
                     retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace-1, asserta(usedSpace(NewUsedSpace)),
-                    retract(currHP(CurrentHP)), NewHPRefill is CurrentHP + RefillHP,
+                    retract(currHP(CurrentHP)), NewHPRefill is CurrentHP + RefillHP, maxHP(MaxHP),
                     (NewHPRefill > MaxHP, NewHP is MaxHP, !;
                     NewHP is NewHPRefill, !),
                     asserta(currHP(NewHP)),
@@ -136,7 +136,7 @@ usePotion(Item) :-  (isInInventory(Item), potion(Item, RefillHP, Attack, Defense
                     asserta(att(NewAttack)),
                     retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                     asserta(def(NewDefense))),
-                    write(Item), write(' used.'), nl;
+                    write(Item), write(' used.'), nl, !;
                     \+(isInInventory(Item)) -> write('Potion is not in your inventory.'), nl.
 
 checkEquipment :-   write('Your equipment : '), nl,
