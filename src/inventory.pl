@@ -125,19 +125,21 @@ unequipAccessory(Item) :-   (accessoryEquipped(Item) -> (accessory(Item, Class, 
                             write(Item), write(' unequipped.'), nl;
                             write('The accessory is not equipped.'), nl).
 
-usePotion(Item) :-  (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
+usePotion(Item) :-  enemy_spawned(Enemy), (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
                     -> retract(stored(Item,X)), Y is X-1, asserta(stored(Item, Y)),
                     retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace-1, asserta(usedSpace(NewUsedSpace)),
                     retract(currHP(CurrentHP)), NewHPRefill is CurrentHP + RefillHP, maxHP(MaxHP),
-                    (NewHPRefill > MaxHP, NewHP is MaxHP, !;
-                    NewHP is NewHPRefill, !),
+                    (NewHPRefill > MaxHP -> NewHP is MaxHP;
+                    NewHP is NewHPRefill),
                     asserta(currHP(NewHP)),
                     retract(att(CurrentAttack)), NewAttack is CurrentAttack + Attack,
                     asserta(att(NewAttack)),
                     retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                     asserta(def(NewDefense))),
-                    write(Item), write(' used.'), nl, !;
-                    \+(isInInventory(Item)) -> write('Potion is not in your inventory.'), nl.
+                    write(Item), write(' used.'), nl, enemy_turn, !;
+                    \+(isInInventory(Item)) -> write('Potion is not in your inventory.'), nl, !.
+
+usePotion(Item) :- \+(enemy_spawned(_)), write('There is no enemy'), nl, !.
 
 checkEquipment :-   write('Your equipment : '), nl,
                     weaponEquipped(Weapon), write('Weapon : '), write(Weapon), nl,
