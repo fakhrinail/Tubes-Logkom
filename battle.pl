@@ -117,7 +117,7 @@ attack :-
     att(Player_att),
     enemy_DEF(Enemy,Enemy_def),
     DamagetoEnemy is Player_att - Enemy_def,
-    managingDamage(DamagetoEnemy,Realdamage)
+    managingDamage(DamagetoEnemy,Realdamage),
     format('You deal ~p damages !',[Realdamage]),nl,
     modifyenemyHP(-Realdamage),
     check_condition_enemy,
