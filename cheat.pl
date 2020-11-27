@@ -82,4 +82,5 @@ iamgod :-   retract(maxHP(MaxHP)), asserta(maxHP(9999)),
             retract(att(Attack)), asserta(att(9999)),
             retract(def(Defense)), asserta(def(9999)),
             retract(expr(Exp)), asserta(expr(999999)),
+            levelUp,
             write('Anda seorang dewa sekarang.').

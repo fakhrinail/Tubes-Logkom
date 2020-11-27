@@ -121,7 +121,7 @@ run :-  % mau kabur tapi ga ada yg ngejar
     write('There is no enemy'),nl,!.
 
 run :-  % run failed
-    write('The enemy bloked your path!!'),nl,
+    write('The enemy blocked your path!!'),nl,
     modifyspcAttTurn(1),!.
 
 /******************************** Attack ********************************/ 

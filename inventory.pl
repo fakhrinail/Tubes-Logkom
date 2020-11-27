@@ -18,19 +18,19 @@ storeItem(X) :- (inventory(UsedSpace), UsedSpace < 100 ->
                 NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace));
                 asserta(stored(X,1)), retract(usedSpace(UsedSpace)), 
                 NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace))),
-                write('Item telah ditambahkan ke inventory.'), nl;
-                write('Inventory Anda sudah penuh.'), nl).
+                write('Item added to your inventory.'), nl;
+                write('Inventory is full.'), nl).
 
 discardItem(Item, X) :- (isInInventory(Item) -> stored(Item, Y), Z is Y-X, 
                         (Z =< 0 -> retract(stored(Item, Y)), retract(usedSpace(UsedSpace)),
                         NewUsedSpace is UsedSpace - Y, asserta(usedSpace(NewUsedSpace));
                         retract(stored(Item, Y)), asserta(stored(Item, Z)), retract(usedSpace(UsedSpace)),
                         NewUsedSpace is UsedSpace - X, asserta(usedSpace(NewUsedSpace))),
-                        write('Item telah dibuang.'), nl;
-                        write('Anda tidak memiliki item yang mau dibuang.'), nl).
+                        write('Item discarded.'), nl;
+                        write('No item to discard.'), nl).
 
-inventory :- write('Kapasitas inventory : '), inventory(X), write(X), write('/'), write('100.'), nl,
-             write('Daftar barang : '), nl, nl,
+inventory :- write('Inventory capacity : '), inventory(X), write(X), write('/'), write('100.'), nl,
+             write('List of items : '), nl, nl,
              forall((isInInventory(Item)), 
              (countItemInventory(Item, CountItem), write(Item), write(' ('), write(CountItem), write(') '), nl)), nl.
 
@@ -45,9 +45,9 @@ equipWeapon(Item) :-    (isInInventory(Item), weapon(Item, Class, Attack, Defens
                         retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                         asserta(def(NewDefense)),
                         retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace - 1,
-                        asserta(usedSpace(NewUsedSpace)), write(Item), write(' digunakan.'), nl;
-                        \+(isInInventory(Item)) -> write('Senjata ini tidak ada di inventory Anda.'), nl;
-                        write('Senjata ini tidak bisa digunakan dengan job Anda.'), nl).
+                        asserta(usedSpace(NewUsedSpace)), write(Item), write(' equipped.'), nl;
+                        \+(isInInventory(Item)) -> write('This weapon is not in your inventory.'), nl;
+                        write('Weapon is not compatible with your job.'), nl).
 
 unequipWeapon(Item) :-  (weaponEquipped(Item) -> (weapon(Item, Class, Attack, Defense),
                         retract(att(CurrentAttack)), NewAttack is CurrentAttack - Attack,
@@ -60,8 +60,8 @@ unequipWeapon(Item) :-  (weaponEquipped(Item) -> (weapon(Item, Class, Attack, De
                         inventory(UsedSpace), UsedSpace < 100,
                         retract(weaponEquipped(Item)), retract(usedSpace(UsedSpace)),
                         NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace)),
-                        write(Item), write(' dilepas.'), nl;
-                        write('Anda sedang tidak menggunakan senjata ini.'), nl).
+                        write(Item), write(' unequipped.'), nl;
+                        write('The weapon is not equipped.'), nl).
 
 equipArmor(Item) :-    (isInInventory(Item), armor(Item, Class, MaxHP, Defense),
                         job(Class) -> 
@@ -74,9 +74,9 @@ equipArmor(Item) :-    (isInInventory(Item), armor(Item, Class, MaxHP, Defense),
                         retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                         asserta(def(NewDefense)),
                         retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace - 1,
-                        asserta(usedSpace(NewUsedSpace)), write(Item), write(' digunakan.'), nl;
-                        \+(isInInventory(Item)) -> write('Armor ini tidak ada di inventory Anda.'), nl;
-                        write('Armor ini tidak bisa digunakan dengan job Anda.'), nl).
+                        asserta(usedSpace(NewUsedSpace)), write(Item), write(' equipped.'), nl;
+                        \+(isInInventory(Item)) -> write('This armor is not in your inventory.'), nl;
+                        write('Armor is not compatible with your job.'), nl).
 
 unequipArmor(Item) :-  (armorEquipped(Item) -> (armor(Item, Class, MaxHP, Defense),
                         retract(maxHP(CurrentMaxHP)), NewMaxHP is CurrentMaxHP - MaxHP,
@@ -89,8 +89,8 @@ unequipArmor(Item) :-  (armorEquipped(Item) -> (armor(Item, Class, MaxHP, Defens
                         inventory(UsedSpace), UsedSpace < 100,
                         retract(armorEquipped(Item)), retract(usedSpace(UsedSpace)),
                         NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace)),
-                        write(Item), write(' dilepas.'), nl;
-                        write('Anda sedang tidak menggunakan armor ini.'), nl).
+                        write(Item), write(' unequipped.'), nl;
+                        write('The armor is not equipped.'), nl).
 
 equipAccessory(Item) :- (isInInventory(Item), accessory(Item, Class, MaxHP, Attack, Defense),
                         job(Class) -> 
@@ -105,9 +105,9 @@ equipAccessory(Item) :- (isInInventory(Item), accessory(Item, Class, MaxHP, Atta
                         retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                         asserta(def(NewDefense)),
                         retract(usedSpace(UsedSpace)), NewUsedSpace is UsedSpace - 1,
-                        asserta(usedSpace(NewUsedSpace)), write(Item), write(' digunakan.'), nl;
-                        \+(isInInventory(Item)) -> write('Aksesoris ini tidak ada di inventory Anda.'), nl;
-                        write('Aksesoris ini tidak bisa digunakan dengan job Anda.'), nl).
+                        asserta(usedSpace(NewUsedSpace)), write(Item), write(' equipped.'), nl;
+                        \+(isInInventory(Item)) -> write('This accessory is not in your inventory.'), nl;
+                        write('Accessory is not compatible with your job.'), nl).
 
 unequipAccessory(Item) :-   (accessoryEquipped(Item) -> (accessory(Item, Class, MaxHP, Attack, Defense),
                             retract(maxHP(CurrentMaxHP)), NewMaxHP is CurrentMaxHP - MaxHP,
@@ -122,8 +122,8 @@ unequipAccessory(Item) :-   (accessoryEquipped(Item) -> (accessory(Item, Class, 
                             inventory(UsedSpace), UsedSpace < 100,
                             retract(accessoryEquipped(Item)), retract(usedSpace(UsedSpace)),
                             NewUsedSpace is UsedSpace + 1, asserta(usedSpace(NewUsedSpace)),
-                            write(Item), write(' dilepas.'), nl;
-                            write('Anda sedang tidak menggunakan aksesoris ini.'), nl).
+                            write(Item), write(' unequipped.'), nl;
+                            write('The accessory is not equipped.'), nl).
 
 usePotion(Item) :-  (isInInventory(Item), potion(Item, RefillHP, Attack, Defense)
                     -> retract(stored(Item,X)), Y is X-1, asserta(stored(Item, Y)),
@@ -136,10 +136,10 @@ usePotion(Item) :-  (isInInventory(Item), potion(Item, RefillHP, Attack, Defense
                     asserta(att(NewAttack)),
                     retract(def(CurrentDefense)), NewDefense is CurrentDefense + Defense,
                     asserta(def(NewDefense))),
-                    write(Item), write(' digunakan.'), nl;
-                    \+(isInInventory(Item)) -> write('Potion tidak ada di inventory Anda.'), nl.
+                    write(Item), write(' used.'), nl;
+                    \+(isInInventory(Item)) -> write('Potion is not in your inventory.'), nl.
 
-checkEquipment :-   write('Equipment Anda : '), nl,
+checkEquipment :-   write('Your equipment : '), nl,
                     weaponEquipped(Weapon), write('Weapon : '), write(Weapon), nl,
                     armorEquipped(Armor), write('Armor : '), write(Armor), nl,
                     accessoryEquipped(Accessory), write('Accessory : '), write(Accessory), nl.
