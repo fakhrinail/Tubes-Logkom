@@ -15,6 +15,7 @@
 :- include('quest.pl').
 :- include('gameOver.pl').
 :- include('saveload.pl').
+:- include('slide.pl').
 :- initialization(nl).
 :- initialization(write('                        [ Welcome to My World ]                     ')).
 :- initialization(nl).
