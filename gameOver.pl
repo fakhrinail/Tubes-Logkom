@@ -1,5 +1,3 @@
-:- include('status.pl').
-
 gameOver :- 
     write('$$1     $$1                                                                                                        $$1                                                          '), nl,
     write('1$$1   $$  |                                                                                                      1__|                                                         '), nl,
@@ -22,4 +20,4 @@ restart(Input_restart) :-
 restart(Input_restart) :-
     Input_restart = 'N',
     write('Thanks for playing our game !'), nl,
-    write('See you in next our game !'), nl, !.
+    write('See you in our next game !'), nl, !.
