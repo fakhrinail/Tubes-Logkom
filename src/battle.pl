@@ -75,8 +75,10 @@ check_condition_enemy :-
     format('You earn ~p gold and ~p exp !!',[Gold, Exp]),nl,
     EnemyName = Enemy,
     despawn_enemy,
+    check_ending(EnemyName),
     levelUp,
-    progresQuest(EnemyName),!.
+    progresQuest(EnemyName),
+    !.
 
 check_condition_enemy.
 
@@ -88,6 +90,12 @@ check_condition_player :-
     gameOver,!.    % memanggil mekanise game over
 
 check_condition_player.
+
+check_ending(Enemy) :-
+    Enemy = tugasBesar,
+    ending,!.
+
+check_ending(EnemyName).
 
 /******************************** RUN!!!! ************************************/
 run :-      % run success
