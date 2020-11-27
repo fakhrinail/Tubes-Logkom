@@ -22,11 +22,7 @@
 :- initialization(nl).
 :- initialization(write('# 1. start       : untuk memulai petualanganmu                     #')).
 :- initialization(nl).
-:- initialization(write('# 2. continue    : melanjutkan permainan terakhir                  #')).
-:- initialization(nl).
-:- initialization(write('# 3. load        : memuat data permainan                           #')).
-:- initialization(nl).
-:- initialization(write('# 4. help        : menampilkan segala bantuan                      #')).
+:- initialization(write('# 2. help        : menampilkan segala bantuan                      #')).
 :- initialization(nl).
 :- initialization(write('####################################################################')).
 :- initialization(nl).

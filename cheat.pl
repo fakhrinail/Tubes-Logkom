@@ -14,7 +14,7 @@ teleport :- write('   X 1 2 3 4 5 6 7 8 9 10'), nl,
             write('11 # _ _ _ _ _ _ _ _ _ _ #'), nl,
             write('12 # _ _ _ _ _ _ _ _ _ _ #'), nl,
             write('   # # # # # # # # # # # #'), nl, nl,
-            write('Anda ingin teleport kemana?'), nl,
+            write('Where do you want to teleport?'), nl,
             write('X = '), read(NewX), nl,
             write('Y = '), read(NewY), nl,
             initmap(M),
@@ -25,7 +25,7 @@ teleport :- write('   X 1 2 3 4 5 6 7 8 9 10'), nl,
             asserta(initmap(M2)),
             retract(position(player,_,_)),
             asserta(position(player,NewX,NewY)),
-            write('Anda teleport ke koordinat ('), write(NewX), write(','), write(NewY), write(').'), nl, !.
+            write('Teleporting to ('), write(NewX), write(','), write(NewY), write(').'), nl, !.
 
 pleasegivemegodkit :-   job(Class),
                         (Class == swordsman ->
@@ -71,11 +71,11 @@ pleasegivemegodkit :-   job(Class),
                         storeItem(xtraelixir),
                         storeItem(xtraelixir),
                         storeItem(xtraelixir),
-                        write('Anda sudah dilengkapi oleh equipment dewa.').
+                        write('You are equipped with god equipments.').
 
 moneymoneymoney :-  retract(gold(Gold)),
                     asserta(gold(999999999)),
-                    write('Anda seorang milyarder sekarang.').
+                    write('You are hella rich.').
 
 iamgod :-   retract(maxHP(MaxHP)), asserta(maxHP(9999)),
             retract(currHP(CurrentHP)), asserta(currHP(9999)),  
@@ -83,4 +83,4 @@ iamgod :-   retract(maxHP(MaxHP)), asserta(maxHP(9999)),
             retract(def(Defense)), asserta(def(9999)),
             retract(expr(Exp)), asserta(expr(999999)),
             levelUp,
-            write('Anda seorang dewa sekarang.').
+            write('You are GOD.').
