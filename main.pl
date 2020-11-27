@@ -33,11 +33,8 @@
 gameMenu :-
         write('####################################################################'), nl,
         write('# 1. map         : menampilkan peta                                #'), nl,
-        write('# 2. condition   : menampilkan kondisi pemain terkini              #'), nl,
-        write('# 3. stats       : menampilkan status pemain                       #'), nl,
-        write('# 4. rucksack    : menampilkan inventory pemain                    #'), nl,
-        write('# 5. shop        : mengunjungi shop                                #'), nl,
-        write('# 6. save        : menyimpan data permainan                        #'), nl,
-        write('# 7. load        : memuat data permainan                           #'), nl,
-        write('# 8. help        : menampilkan segala bantuan                      #'), nl,
+        write('# 2. stats       : menampilkan status pemain                       #'), nl,
+        write('# 3. inventory   : menampilkan inventory pemain                    #'), nl,
+        write('# 4. shop        : mengunjungi shop                                #'), nl,
+        write('# 5. help        : menampilkan segala bantuan                      #'), nl,
         write('####################################################################'), nl.

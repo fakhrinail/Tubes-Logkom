@@ -10,8 +10,9 @@ buyshop(Input_Items) :-
     gachaSystem, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'gacha',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'gacha', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 % Buy potion
 buyshop(Input_Items) :-
@@ -24,11 +25,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     storeItem(medicine),
     asserta(gold(Gold_remaining)),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'medicine',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'medicine', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'highmedicine', 
@@ -40,11 +42,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(highmedicine),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'highmedicine',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'highmedicine', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'megamedicine', 
@@ -56,11 +59,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(megamedicine),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'megamedicine',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'megamedicine', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'xtramedicine', 
@@ -72,11 +76,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(xtramedicine),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'xtramedicine',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'xtramedicine', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'ether', 
@@ -88,11 +93,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(ether),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'ether',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'ether', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'highether', 
@@ -104,11 +110,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(highether),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'highether',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'highether', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'megaether', 
@@ -120,11 +127,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(megaether),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'megaether',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'megaether', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'xtraether', 
@@ -136,11 +144,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(xtraether),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'xtraether',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'xtraether', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'elixir', 
@@ -152,11 +161,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(elixir),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'elixir',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'elixir', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'highelixir', 
@@ -168,11 +178,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(highelixir),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'highelixir',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'highelixir', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'megaelixir', 
@@ -184,11 +195,12 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(megaelixir),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'megaelixir',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'megaelixir', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
     Input_Items = 'xtraelixir', 
@@ -200,18 +212,21 @@ buyshop(Input_Items) :-
     retractall(gold(_)),
     asserta(gold(Gold_remaining)),
     storeItem(xtraelixir),
-    write('Terima kasih sudah membeli !'), nl, !.
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'xtraelixir',
-    write('Tidak punya cukup ruang atau gold untuk membeli items ini !'), nl, !.
+    Input_Items = 'xtraelixir', nl,
+    write('[ShopKeeper] Not enough space or gold to buy this items !'), nl,
+    loopShop, !.
 
 buyshop(Input_Items) :-
-    Input_Items = 'quit', 
-    write('Terima kasih telah mengunjungi shop !'), !.
+    Input_Items = 'quit', nl,
+    write('[ShopKeeper] Thank you for visiting my shop !'), !.
 
 buyshop(_) :- 
-    write('Items tidak ada di dalam shop menu'), !.
+    nl,
+    write('[ShopKeeper] There is no such item in shop menu !'), nl,
+    loopShop, !.
     
 gachaSystem :-
     lvl(Level),
@@ -252,3 +267,9 @@ gachaSystem :-
     random(1, 3, TypeGacha),
     random(1, 5, RateGacha),
     storeGacha(TypeGacha, RateGacha, Level, Jobname).
+
+loopShop :-
+    nl,
+    write('[ShopKeeper] Is there anything else do you want to buy?'), nl,
+    read(Input_Items), 
+    buyshop(Input_Items), !.

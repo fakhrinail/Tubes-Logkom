@@ -12,8 +12,8 @@ init_shop :-
 shop :-
     near(shop),
     init_shop, nl,
-    write('Selamat datang di Secret Shop ! owo)7 '), nl,
-    write('Apa yang ingin kamu beli?'), nl,
+    write('Welcome to the Secret Shop ! owo)7 '), nl,
+    write('What do you want to buy?'), nl,
     write('1. gacha         (1000 gold)'), nl,
     write('2. medicine      (125 gold)'), nl,
     write('3. highmedicine  (250 gold)'), nl,
