@@ -32,7 +32,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime and '), write(Y), write(' Goblin to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime and '), write(Y), write(' Goblin to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -56,7 +56,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -77,7 +77,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Wolf dan '), write(Y), write(' Witch to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Wolf dan '), write(Y), write(' Witch to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -104,7 +104,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(W), write(' Witch, '), write(X), write(' Armored Goblin, '), write(Y), write(' Cubic Slime dan '), write(Z), write(' Werewolf to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(W), write(' Witch, '), write(X), write(' Armored Goblin, '), write(Y), write(' Cubic Slime dan '), write(Z), write(' Werewolf to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -131,7 +131,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(W), write(' Armored Goblin, '), write(X), write(' Cubic Slime, '), write(Y), write(' Werewolf dan '), write(Z), write(' Ogre to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(W), write(' Armored Goblin, '), write(X), write(' Cubic Slime, '), write(Y), write(' Werewolf dan '), write(Z), write(' Ogre to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -155,7 +155,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Werewolf, '), write(Y), write(' Ogre dan '), write(Z), write(' Cursed Knight to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Werewolf, '), write(Y), write(' Ogre dan '), write(Z), write(' Cursed Knight to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -179,14 +179,14 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Ogre, '), write(Y), write(' Cursed Knight dan '), write(Z), write(' Ultima Dragon to get your reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Ogre, '), write(Y), write(' Cursed Knight dan '), write(Z), write(' Ultima Dragon to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
     Lvl > 50,
-    write('You are too OP, just defeat the boss already').
+    write('You are too OP, just defeat the boss already'),!.
 
 % ngasih reward quest
 questCompleted :-

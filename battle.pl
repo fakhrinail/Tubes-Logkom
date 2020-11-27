@@ -73,7 +73,6 @@ check_condition_enemy :-
     modifyplayerexp(Exp),
     modifyplayergold(Gold),
     format('You earn ~p gold and ~p exp !!',[Gold, Exp]),nl,
-    questCompleted,
     despawn_enemy,
     levelUp,!.
 
