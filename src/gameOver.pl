@@ -27,3 +27,19 @@ restart(Input_restart) :-
 restart(Input_restart) :-
     write('Wrong Input'),nl,
     get_char(Input_restart), restart(Input_restart),!.
+    
+ending :-
+    slide01,
+    slide02,
+    slide03,
+    slide04,
+    slide05,
+    slide06,
+    slide07,
+    slide08,
+    slide09,
+    slide10,
+    slide11,
+    slide12, nl,
+    write('Do you wanna play again? Y/N?'), nl,
+    get_char(Input_restart), restart(Input_restart), !.
