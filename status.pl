@@ -8,13 +8,12 @@
 :- dynamic(expr/1).
 :- dynamic(gold/1).
 :- dynamic(lvl/1).
-:- dynamic(gamestate/1). % buat indikator lagi ngapain (jalan2 di map, battle, mati, dkk)
 
-start :- write('Pilih Job yang diinginkan: '), nl,
+start :- write('Choose your job: '), nl,
         write('1. Swordsman'), nl,
         write('2. Sorcerer'), nl,
         write('3. Archer'), nl,
-        write('Masukkan nomor job yang diinginkan'), nl,
+        write('Input your job number'), nl,
         read(InputJob), 
         assignJob(InputJob),!.
 
@@ -24,6 +23,18 @@ assignJob(InputJob) :-
         asserta(job(swordsman)),
         asserta(usedSpace(0)),
         asserta(isOnQuest(0)),
+        asserta(jmlGoblin(0)),
+        asserta(jmlSlime(0)),
+        asserta(jmlWolf(0)),
+        asserta(jmlWitch(0)),
+        asserta(jmlArmoredGoblin(0)),
+        asserta(jmlCubicSlime(0)),
+        asserta(jmlWerewolf(0)),
+        asserta(jmlOgre(0)),
+        asserta(jmlCursedKnight(0)),
+        asserta(jmlUltimaDragon(0)),
+        asserta(rewardExp(0)),
+        asserta(rewardGold(0)),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
@@ -32,13 +43,25 @@ assignJob(InputJob) :-
         asserta(weaponEquipped(longsword)),
         asserta(armorEquipped(none)),
         asserta(accessoryEquipped(none)),
-        write('Job Anda adalah Swordsman'), inputStats(swordsman), !.
+        write('Your Job is Swordsman'), inputStats(swordsman), !.
 assignJob(InputJob) :- 
         InputJob = 2, 
         retractall(job(_)),
         asserta(job(sorcerer)),
         asserta(usedSpace(0)),
         asserta(isOnQuest(0)),
+        asserta(jmlGoblin(0)),
+        asserta(jmlSlime(0)),
+        asserta(jmlWolf(0)),
+        asserta(jmlWitch(0)),
+        asserta(jmlArmoredGoblin(0)),
+        asserta(jmlCubicSlime(0)),
+        asserta(jmlWerewolf(0)),
+        asserta(jmlOgre(0)),
+        asserta(jmlCursedKnight(0)),
+        asserta(jmlUltimaDragon(0)),
+        asserta(rewardExp(0)),
+        asserta(rewardGold(0)),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
@@ -47,7 +70,7 @@ assignJob(InputJob) :-
         asserta(weaponEquipped(magestaff)),
         asserta(armorEquipped(none)),
         asserta(accessoryEquipped(none)),
-        write('Job Anda adalah Sorcerer'), 
+        write('Your Job is Sorcerer'), 
         inputStats(sorcerer), !.
 assignJob(InputJob) :- 
         InputJob = 3, 
@@ -55,6 +78,18 @@ assignJob(InputJob) :-
         asserta(job(archer)), 
         asserta(usedSpace(0)),
         asserta(isOnQuest(0)),
+        asserta(jmlGoblin(0)),
+        asserta(jmlSlime(0)),
+        asserta(jmlWolf(0)),
+        asserta(jmlWitch(0)),
+        asserta(jmlArmoredGoblin(0)),
+        asserta(jmlCubicSlime(0)),
+        asserta(jmlWerewolf(0)),
+        asserta(jmlOgre(0)),
+        asserta(jmlCursedKnight(0)),
+        asserta(jmlUltimaDragon(0)),
+        asserta(rewardExp(0)),
+        asserta(rewardGold(0)),
         storeItem(medicine),
         storeItem(medicine),
         storeItem(medicine),
@@ -63,9 +98,9 @@ assignJob(InputJob) :-
         asserta(weaponEquipped(woodenbow)),
         asserta(armorEquipped(none)),
         asserta(accessoryEquipped(none)),
-        write('Job Anda adalah Archer'), 
+        write('Your Job is Archer'), 
         inputStats(archer), !.
-assignJob(_) :- write('Salah input'),!.
+assignJob(_) :- write('Wrong input'),!.
 
 inputStats(JobName) :- 
         JobName = swordsman,
@@ -116,7 +151,7 @@ levelUp :-
         asserta(lvl(NewLevel)),
         retract(expr(_)),
         asserta(expr(NewExp)),
-        write('Naik level menjadi level '),
+        write('You leveled up! You are now level '),
         write(Lvl),
         levelUp,
         !.

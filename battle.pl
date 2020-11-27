@@ -55,6 +55,7 @@ init_battle(Enemy) :-
     enemy_ATK(Enemy,Att),
     enemy_DEF(Enemy,Def),
     asserta(enemy_spawned(Enemy)),
+    nl,
     write('Level : '), write(Lvl),nl,
     write('Health : '), write(HP),nl,
     write('Attack : '), write(Att),nl,
@@ -72,8 +73,9 @@ check_condition_enemy :-
     modifyplayerexp(Exp),
     modifyplayergold(Gold),
     format('You earn ~p gold and ~p exp !!',[Gold, Exp]),nl,
+    questCompleted,
     despawn_enemy,
-    levelup,!.
+    levelUp,!.
 
 check_condition_enemy.
 

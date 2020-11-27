@@ -261,7 +261,7 @@ random_enemy :-
     Lvl >= 5, Lvl =< 9,
     random(1,4,X),
     enemy(Enemy,Name,X),
-    write('You find '), write(Name),write('!!'),
+    write('You find '), write(Name),write('!!'), nl,
     init_battle(Enemy),
     nl,!.
 
@@ -270,7 +270,7 @@ random_enemy :-
     Lvl >= 10, Lvl =< 14,
     random(3,5,X),
     enemy(Enemy,Name,X),
-    write('You find '), write(Name),write('!!'),
+    write('You find '), write(Name),write('!!'), nl,
     init_battle(Enemy),
     nl,!.
 
@@ -279,7 +279,7 @@ random_enemy :-
     Lvl >= 15, Lvl =< 19,
     random(4,8,X),
     enemy(Enemy,Name,X),
-    write('You find '), write(Name),write('!!'),
+    write('You find '), write(Name),write('!!'), nl,
     init_battle(Enemy),
     nl,!.
 
@@ -288,7 +288,7 @@ random_enemy :-
     Lvl >= 20 , Lvl =< 29,
     random(5,9,X),
     enemy(Enemy,Name,X),
-    write('You find '), write(Name),write('!!'),
+    write('You find '), write(Name),write('!!'), nl,
     init_battle(Enemy),
     nl,!.
 
@@ -297,7 +297,7 @@ random_enemy :-
     Lvl >= 30, Lvl =< 39,
     random(7,10,X),
     enemy(Enemy,Name,X),
-    write('You find '), write(Name),write('!!'),
+    write('You find '), write(Name),write('!!'), nl,
     init_battle(Enemy),
     nl,!.
 
@@ -306,6 +306,6 @@ random_enemy :-
     Lvl >= 40,
     random(8,11,X),
     enemy(Enemy,Name,X),
-    write('You find '), write(Name),write('!!'),
+    write('You find '), write(Name),write('!!'), nl,
     init_battle(Enemy),
     nl,!.

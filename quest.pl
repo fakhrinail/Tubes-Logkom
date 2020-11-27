@@ -12,19 +12,6 @@
 :- dynamic(rewardGold/1).
 :- dynamic(rewardExp/1).
 
-(jmlGoblin(0)).
-(jmlSlime(0)).
-(jmlWolf(0)).
-(jmlWitch(0)).
-(jmlArmoredGoblin(0)).
-(jmlCubicSlime(0)).
-(jmlWerewolf(0)).
-(jmlOgre(0)).
-(jmlCursedKnight(0)).
-(jmlUltimaDragon(0)).
-rewardExp(0).
-rewardGold(0).
-
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -45,7 +32,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Slime dan '), write(Y), write(' Goblin untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime and '), write(Y), write(' Goblin to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -69,7 +56,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -90,7 +77,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Wolf dan '), write(Y), write(' Witch untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Wolf dan '), write(Y), write(' Witch to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -117,7 +104,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(W), write(' Witch, '), write(X), write(' Armored Goblin, '), write(Y), write(' Cubic Slime dan '), write(Z), write(' Werewolf untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(W), write(' Witch, '), write(X), write(' Armored Goblin, '), write(Y), write(' Cubic Slime dan '), write(Z), write(' Werewolf to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -144,7 +131,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(W), write(' Armored Goblin, '), write(X), write(' Cubic Slime, '), write(Y), write(' Werewolf dan '), write(Z), write(' Ogre untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(W), write(' Armored Goblin, '), write(X), write(' Cubic Slime, '), write(Y), write(' Werewolf dan '), write(Z), write(' Ogre to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -168,7 +155,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Werewolf, '), write(Y), write(' Ogre dan '), write(Z), write(' Cursed Knight untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Werewolf, '), write(Y), write(' Ogre dan '), write(Z), write(' Cursed Knight to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -192,25 +179,29 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Selamat Anda beruntung! Kalahkan '), write(X), write(' Ogre, '), write(Y), write(' Cursed Knight dan '), write(Z), write(' Ultima Dragon untuk dapatkan reward').
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Ogre, '), write(Y), write(' Cursed Knight dan '), write(Z), write(' Ultima Dragon to get your reward').
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
     Status is 0,
     lvl(Lvl),
     Lvl > 50,
-    write('Udah OP langsung bantai boss').
+    write('You are too OP, just defeat the boss already').
 
 % ngasih reward quest
 questCompleted :-
-    near(quest),
     isOnQuest(Status),
-    Status is 0,
+    Status is 1,
     isQuestCompleted,
     gold(Gold),
     expr(Expr),
     rewardGold(RewardGold),
     rewardExp(RewardExp),
+    write('Your quest is complete! You get '), 
+    write(RewardGold), 
+    write(' gold and '), 
+    write(RewardExp), 
+    write(' exp.'),
     NewGold is Gold+RewardGold,
     NewExpr is Expr+RewardExp,
     retract(gold(_)),
