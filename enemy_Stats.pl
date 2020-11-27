@@ -29,21 +29,21 @@ enemy_maxHP(ultimaDragon, 12000).
 enemy_maxHP(tugasBesar, 25000). % final boss
 
 % ATK enemy
-enemy_ATK(goblin, 25).
-enemy_ATK(slime, 10).
-enemy_ATK(wolf, 45).
-enemy_ATK(witch, 30).
-enemy_ATK(armoredGoblin, 100).
-enemy_ATK(cubicSlime, 150).
-enemy_ATK(werewolf, 300).
-enemy_ATK(ogre, 800).
-enemy_ATK(cursedKnight, 500).
-enemy_ATK(ultimaDragon, 1000).
-enemy_ATK(tugasBesar, 1200). % final boss
+enemy_ATK(goblin, 65).
+enemy_ATK(slime, 75).
+enemy_ATK(wolf, 150).
+enemy_ATK(witch, 250).
+enemy_ATK(armoredGoblin, 400).
+enemy_ATK(cubicSlime, 650).
+enemy_ATK(werewolf, 750).
+enemy_ATK(ogre, 1000).
+enemy_ATK(cursedKnight, 1200).
+enemy_ATK(ultimaDragon, 1500).
+enemy_ATK(tugasBesar, 2500). % final boss
 
 % DEF enemy
 enemy_DEF(goblin, 30).
-enemy_DEF(slime, 15).
+enemy_DEF(slime, 25).
 enemy_DEF(wolf, 35).
 enemy_DEF(witch, 35).
 enemy_DEF(armoredGoblin, 200).

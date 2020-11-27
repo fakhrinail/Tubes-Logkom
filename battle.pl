@@ -162,7 +162,7 @@ specialAttack :-
     spcAttTurn(T),
     T > 3,
     enemy_spawned(Enemy),
-    att(Player_att),
+    specialatt(Player_att,_),
     enemy_DEF(Enemy,Enemy_def),
     DamagetoEnemy is Player_att - Enemy_def,
     write('You use Special Atack'),nl,

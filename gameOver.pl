@@ -15,6 +15,8 @@ gameOver :-
 
 restart(Input_restart) :-
     Input_restart = 'Y',
+    retract(startstate(_)),
+    asserta(startstate(0)),
     start, !.
 
 restart(Input_restart) :-
