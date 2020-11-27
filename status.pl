@@ -8,14 +8,26 @@
 :- dynamic(expr/1).
 :- dynamic(gold/1).
 :- dynamic(lvl/1).
+:- dynamic(startstate/1).
 
-start :- write('Choose your job: '), nl,
+startstate(0).
+
+start :- 
+        startstate(State),
+        State is 0,
+        write('Choose your job: '), nl,
         write('1. Swordsman'), nl,
         write('2. Sorcerer'), nl,
         write('3. Archer'), nl,
         write('Input your job number'), nl,
+        retract(startstate(_)),
+        asserta(startstate(1)),
         read(InputJob), 
         assignJob(InputJob),!.
+start :-
+        startstate(State),
+        State is 1,
+        write('The game has already started, do not try to cheat!'),!.
 
 assignJob(InputJob) :- 
         InputJob = 1, 
@@ -136,13 +148,13 @@ inputStats(JobName) :-
 levelUp :-
         expr(Exp),
         lvl(Lvl),
-        ReqExp is Lvl*25,
+        ReqExp is Lvl*100,
         Exp < ReqExp,
         !.
 levelUp :-
         expr(Exp),
         lvl(Lvl),
-        ReqExp is Lvl*25,
+        ReqExp is Lvl*100,
         Exp >= ReqExp,
         NewLevel is Lvl+1,
         NewExp is Exp-ReqExp,
@@ -152,7 +164,7 @@ levelUp :-
         retract(expr(_)),
         asserta(expr(NewExp)),
         write('You leveled up! You are now level '),
-        write(Lvl),
+        write(NewLevel),
         nl,
         levelUp,
         !.
@@ -163,7 +175,6 @@ inputStatsLvlUp :-
         att(Att),
         specialatt(SpAtt,_),
         def(Def),
-        currHP(CurrentHP),
         maxHP(MaxHP),
         NewAtt is Att+10,
         NewSpAtt is SpAtt+4,

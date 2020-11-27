@@ -32,7 +32,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime and '), write(Y), write(' Goblin to get your reward'),!.
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Goblin and '), write(Y), write(' Slime to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -56,7 +56,7 @@ assignQuest :-
     asserta(rewardExp(RewardExp)),
     retract(isOnQuest(_)),
     asserta(isOnQuest(1)),
-    write('Congrats, You are lucky! Defeat '), write(X), write(' Slime, '), write(Y), write(' Goblin dan '), write(Z), write(' Wolf to get your reward'),!.
+    write('Congrats, You are lucky! Defeat '), write(X), write(' Goblin, '), write(Y), write(' Slime and '), write(Z), write(' Wolf to get your reward'),!.
 assignQuest :- 
     near(quest),
     isOnQuest(Status),
@@ -197,7 +197,8 @@ questCompleted :-
     expr(Expr),
     rewardGold(RewardGold),
     rewardExp(RewardExp),
-    write('Your quest is complete! You get '), 
+    write('Your quest is complete!'), nl,
+    write('You get '),
     write(RewardGold), 
     write(' gold and '), 
     write(RewardExp), 
@@ -214,23 +215,124 @@ questCompleted :-
 
 % cek isQuestCompleted tiap habis battle
 isQuestCompleted :-
-    (jmlGoblin(targetGoblin)),
-    (jmlSlime(targetSlime)),
-    (jmlWolf(targetWolf)),
-    (jmlWitch(targetWitch)),
-    (jmlArmoredGoblin(targetArmoredGoblin)),
-    (jmlCubicSlime(targetCubicSlime)),
-    (jmlWerewolf(targetWerewolf)),
-    (jmlOgre(targetOgre)),
-    (jmlCursedKnight(targetCursedKnight)),
-    (jmlUltimaDragon(targetUltimaDragon)),
-    targetGoblin is 0,
-    targetSlime is 0,
-    targetWolf is 0,
-    targetWerewolf is 0,
-    targetWitch is 0,
-    targetArmoredGoblin is 0,
-    targetCubicSlime is 0,
-    targetOgre is 0,
-    targetCursedKnight is 0,
-    targetUltimaDragon is 0.
+    (jmlGoblin(TargetGoblin)),
+    (jmlSlime(TargetSlime)),
+    (jmlWolf(TargetWolf)),
+    (jmlWitch(TargetWitch)),
+    (jmlArmoredGoblin(TargetArmoredGoblin)),
+    (jmlCubicSlime(TargetCubicSlime)),
+    (jmlWerewolf(TargetWerewolf)),
+    (jmlOgre(TargetOgre)),
+    (jmlCursedKnight(TargetCursedKnight)),
+    (jmlUltimaDragon(TargetUltimaDragon)),
+    TargetGoblin is 0,
+    TargetSlime is 0,
+    TargetWolf is 0,
+    TargetWerewolf is 0,
+    TargetWitch is 0,
+    TargetArmoredGoblin is 0,
+    TargetCubicSlime is 0,
+    TargetOgre is 0,
+    TargetCursedKnight is 0,
+    TargetUltimaDragon is 0.
+
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = goblin,
+    jmlGoblin(TargetGoblin),
+    TargetGoblin > 0,
+    NewTarget is TargetGoblin-1,
+    retract(jmlGoblin(_)),
+    asserta(jmlGoblin(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = slime,
+    jmlSlime(TargetSlime),
+    TargetSlime > 0,
+    NewTarget is TargetSlime-1,
+    retract(jmlSlime(_)),
+    asserta(jmlSlime(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = wolf,
+    jmlWolf(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlWolf(_)),
+    asserta(jmlWolf(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = witch,
+    jmlWitch(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlWitch(_)),
+    asserta(jmlWitch(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = armoredGoblin,
+    jmlArmoredGoblin(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlArmoredGoblin(_)),
+    asserta(jmlArmoredGoblin(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = cubicSlime,
+    jmlCubicSlime(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlCubicSlime(_)),
+    asserta(jmlCubicSlime(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = werewolf,
+    jmlWerewolf(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlWerewolf(_)),
+    asserta(jmlWerewolf(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = ogre,
+    jmlOgre(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlOgre(_)),
+    asserta(jmlOgre(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = cursedKnight,
+    jmlCursedKnight(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlCursedKnight(_)),
+    asserta(jmlCursedKnight(NewTarget)),
+    questCompleted.
+progresQuest(Enemy) :-
+    isOnQuest(Status),
+    Status is 1,
+    Enemy = ultimaDragon,
+    jmlUltimaDragon(Target),
+    Target > 0,
+    NewTarget is Target-1,
+    retract(jmlUltimaDragon(_)),
+    asserta(jmlUltimaDragon(NewTarget)),
+    questCompleted.
