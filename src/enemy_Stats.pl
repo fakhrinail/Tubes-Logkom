@@ -31,7 +31,7 @@ enemy_maxHP(tugasBesar, 25000). % final boss
 % ATK enemy
 enemy_ATK(goblin, 65).
 enemy_ATK(slime, 75).
-enemy_ATK(wolf, 150).
+enemy_ATK(wolf, 120).
 enemy_ATK(witch, 250).
 enemy_ATK(armoredGoblin, 400).
 enemy_ATK(cubicSlime, 650).
